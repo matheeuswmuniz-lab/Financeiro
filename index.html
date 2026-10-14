@@ -9,7 +9,7 @@
 @media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.wrap{padding:15px 12px 40px}.card{padding:14px}.formgrid{gap:10px}header{padding:18px 14px}}
 @media print{header,.nav,.no-print,button{display:none!important}body{background:white}.wrap{max-width:none;padding:0}.card{box-shadow:none;break-inside:avoid}.section{margin-top:12px}}
 
-.login-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(145deg,#12382f,#1e5a47)}
+.user-chip{font-size:12px;color:#e5f2e8;background:#ffffff18;border:1px solid #ffffff35;border-radius:999px;padding:8px 11px;max-width:260px;overflow-wrap:anywhere}.login-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:linear-gradient(145deg,#12382f,#1e5a47)}
 .login-card{width:min(100%,420px);background:#fff;border-radius:22px;padding:26px;box-shadow:0 20px 70px #061c1480}
 .login-card h1{color:#12382f;margin:0 0 6px;font-size:25px}.login-card p{color:#718078;line-height:1.5}
 .login-card .field{margin-top:14px}.login-card input{width:100%;padding:12px;border:1px solid #d8e2db;border-radius:10px}
@@ -55,11 +55,11 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
   </div>
 </div>
 
-<header><div><h1>◈ Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p><div class="verse">“Os planos do diligente tendem à abundância, mas a pressa excessiva, à pobreza.”<cite>Provérbios 21:5</cite></div></div><div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" onclick="exportCSV()">Exportar Excel/CSV</button><button onclick="window.print()">Salvar relatório PDF</button><button id="logoutBtn" class="secondary" type="button">Sair</button></div></header>
+<header><div><h1>◈ Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p><div class="verse">“Os planos do diligente tendem à abundância, mas a pressa excessiva, à pobreza.”<cite>Provérbios 21:5</cite></div></div><div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><div id="currentUser" class="user-chip" aria-live="polite">Usuário não identificado</div><button class="secondary" onclick="exportCSV()">Exportar Excel/CSV</button><button onclick="window.print()">Salvar relatório PDF</button><button id="logoutBtn" class="secondary" type="button">Sair</button></div></header>
 <main class="wrap">
 <div id="notice" class="notice hidden" role="status"></div>
 <div class="app-layout"><nav class="nav no-print" id="nav" aria-label="Navegação principal">
-<button class="active" data-page="dashboard">Visão geral</button><button data-page="wallets">Carteiras</button><button data-page="transactions">Lançamentos</button><button data-page="budgets">Orçamento</button><button data-page="goals">Metas</button><button data-page="planning">Meu futuro</button><button data-page="reports">Relatórios</button><button data-page="backup">Backup e dados</button>
+<button class="active" data-page="dashboard">Visão geral</button><button data-page="wallets">Carteiras</button><button data-page="henrique">Poupança Henrique</button><button data-page="transactions">Lançamentos</button><button data-page="budgets">Orçamento</button><button data-page="goals">Metas</button><button data-page="planning">Meu futuro</button><button data-page="reports">Relatórios</button><button data-page="backup">Backup e dados</button>
 </nav><div class="content-area">
 <section id="dashboard" class="page">
 <div class="row" style="margin-bottom:12px;flex-wrap:wrap"><div><h2 style="margin:0">Seu resumo financeiro</h2><div class="muted small">Valores calculados com base nos lançamentos cadastrados.</div></div><input class="month no-print" type="month" id="monthFilter"></div>
@@ -86,6 +86,21 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 </div>
 <div class="section card"><h2>Contas cadastradas</h2><div id="walletList"></div></div>
 </section>
+<section id="henrique" class="page hidden">
+<div class="card hero"><div class="label">Objetivo exclusivo</div><h2 style="font-size:24px;margin:6px 0">Poupança do Henrique</h2><p style="max-width:780px;margin:0">Acompanhe separadamente o saldo e os depósitos destinados ao Henrique. Os valores registrados aqui também aparecem nos lançamentos gerais e na carteira da poupança.</p></div>
+<div class="grid section">
+<div class="card metric-card"><div class="label">Saldo atual da poupança</div><div class="big" id="henriqueBalance">R$ 0,00</div><div class="muted small">Saldo inicial + depósitos registrados</div></div>
+<div class="card metric-card"><div class="label">Depósitos registrados</div><div class="big green" id="henriqueDeposits">R$ 0,00</div><div class="muted small">Total de entradas nesta poupança</div></div>
+<div class="card metric-card"><div class="label">Quantidade de depósitos</div><div class="big" id="henriqueCount">0</div><div class="muted small">Movimentações registradas</div></div>
+</div>
+<div class="two section">
+<div class="card"><h2>Registrar depósito</h2><form id="henriqueForm"><div class="formgrid">
+<div class="field"><label for="henriqueValue">Valor do depósito (R$)</label><input id="henriqueValue" type="number" min=".01" step=".01" required placeholder="0,00"></div>
+<div class="field"><label for="henriqueDate">Data do depósito</label><input id="henriqueDate" type="date" required></div>
+<div class="field full"><label for="henriqueDesc">Descrição (opcional)</label><input id="henriqueDesc" maxlength="120" placeholder="Ex.: depósito mensal"></div>
+</div><div class="actions"><button type="submit">Registrar na poupança</button></div></form><p class="muted small">Este registro será salvo na carteira “Poupança Henrique” e sincronizado com os dados familiares quando o Supabase estiver conectado.</p></div>
+<div class="card"><h2>Histórico da poupança</h2><div id="henriqueHistory"></div></div>
+</div></section>
 <section id="transactions" class="page hidden">
 <div class="two">
 <div class="card"><h2>Novo lançamento</h2><form id="txForm"><div class="formgrid">
@@ -141,9 +156,9 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 <script>
 
 // IMPORTANTE: use apenas a chave pública/anon do projeto. NUNCA coloque service_role ou senhas administrativas no HTML.
-const SUPABASE_URL = 'hte.co';
-const SUPABASE_ANON_KEY = 'saeW7DN';
-const FAMILY_ID = '479d';
+const SUPABASE_URL = 'https://mgwrrqywatktxskgfuil.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_IogDeLhPc_dbb4Ztuz7Oxw_1zaeW7DN';
+const FAMILY_ID = '447051c8-60f7-4172-9f62-c752f150779d';
 const cloudConfigured = !SUPABASE_URL.startsWith('COLE_') && !SUPABASE_ANON_KEY.startsWith('COLE_') && !FAMILY_ID.startsWith('COLE_') && !!window.supabase;
 const cloud = cloudConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}) : null;
 let cloudUser = null, cloudReady = false, cloudSaveQueue = Promise.resolve(), familyRealtimeChannel = null;
@@ -154,7 +169,7 @@ const DEFAULT_WALLETS = [
 ];
 function localSnapshot(){
  let plan=null;try{plan=JSON.parse(localStorage.getItem('mf_plan_v1')||'null')}catch(e){}
- return {version:3,transactions:tx,goals,wallets,budgets,plan};
+ return {version:3,transactions:tx,goals,wallets,budgets,henriqueSavings,plan};
 }
 function applySnapshot(d){
  if(!d || typeof d!=='object') return;
@@ -162,6 +177,7 @@ function applySnapshot(d){
  if(Array.isArray(d.goals)) goals=d.goals;
  if(Array.isArray(d.wallets) && d.wallets.length) wallets=d.wallets;
  if(Array.isArray(d.budgets)) budgets=d.budgets;
+ if(Array.isArray(d.henriqueSavings)) henriqueSavings=d.henriqueSavings;
  if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));if(typeof loadPlanSettings==='function')loadPlanSettings();}
  tx=tx.map(t=>({...t,walletId:t.walletId||(wallets[0]&&wallets[0].id)}));
  localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));
@@ -193,11 +209,31 @@ async function hydrateFamilyData(){
      tx=[];goals=[];wallets=DEFAULT_WALLETS.map(w=>({...w}));budgets=[];saveLocalOnly();cloudReady=true;await persistCloud(true);
    }
  }
- cloudReady=true;render();
+ cloudReady=true;seedInitialExpenses();render();
  if(familyRealtimeChannel){cloud.removeChannel(familyRealtimeChannel);familyRealtimeChannel=null;}
  familyRealtimeChannel=cloud.channel('financeiro-muniz-family-'+FAMILY_ID).on('postgres_changes',{event:'UPDATE',schema:'public',table:'family_data',filter:'family_id=eq.'+FAMILY_ID},payload=>{if(!cloudUser||payload.new?.updated_by===cloudUser.id)return;applySnapshot(payload.new.data||{});render();msg('Dados familiares atualizados em outro aparelho.');}).subscribe();
 }
-function saveLocalOnly(){localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));}
+
+// Despesas iniciais informadas pelo usuário. IDs fixos impedem duplicação após novos logins.
+function seedInitialExpenses(){
+ const existing=new Set(tx.map(t=>t.id));
+ const defaults=[
+  {id:'initial-exp-luciano-202610',desc:'Empréstimo Luciano (parcela 29/49)',value:871.44,date:'2026-10-10',cat:'Parcelas e dívidas'},
+  {id:'initial-exp-documento-carro-202610',desc:'Documento do carro (parcela 7/10)',value:153.83,date:'2026-10-10',cat:'Transporte'},
+  {id:'initial-exp-livro-henrique-202610',desc:'Livro escola Henrique (parcela 7/8; resta 1)',value:86.25,date:'2026-10-10',cat:'Educação'},
+  {id:'initial-exp-escola-premium-202610',desc:'Escola Premium',value:1250,date:'2026-10-10',cat:'Educação'},
+  {id:'initial-exp-internet-202610',desc:'Internet',value:240,date:'2026-10-15',cat:'Contas e serviços'},
+  {id:'initial-exp-casa-202610',desc:'Casa (R$ 700; parcela 75 — confirmar vencimento)',value:700,date:'2026-10-15',cat:'Moradia'},
+  {id:'initial-exp-carro-202610',desc:'Carro (R$ 2.430 — confirmar parcela e vencimento)',value:2430,date:'2026-10-15',cat:'Transporte'},
+  {id:'initial-exp-solar-202610',desc:'Placa solar (parcela 1/48)',value:395,date:'2026-10-15',cat:'Parcelas e dívidas'}
+ ];
+ const wallet=wallets.find(w=>w.owner==='Minha carteira')||wallets[0];
+ let added=0;
+ defaults.forEach(t=>{if(!existing.has(t.id)){tx.push({...t,kind:'Despesa',walletId:wallet?.id,status:'Pendente',recurrence:'Mensal',initialImport:true});added++}});
+ if(added){save();msg(added+' despesas iniciais adicionadas como pendentes. Confira as datas provisórias da casa e do carro.')}
+}
+
+function saveLocalOnly(){localStorage.setItem('mf_henrique_savings_v1',JSON.stringify(henriqueSavings));localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));}
 async function persistCloud(showStatus=false){
  if(!cloud || !cloudUser || !cloudReady) return;
  const payload=localSnapshot();
@@ -209,7 +245,7 @@ async function persistCloud(showStatus=false){
  catch(e){console.error('Falha ao sincronizar:',e);msg('Atenção: não foi possível sincronizar. Faça um backup e confira a conexão.');}
 }
 async function enterAfterAuth(user){
- cloudUser=user;document.body.classList.remove('locked');document.getElementById('loginScreen').style.display='none';
+ cloudUser=user;document.getElementById('currentUser').textContent='Conectado: '+(user.email||'usuário autorizado');document.body.classList.remove('locked');document.getElementById('loginScreen').style.display='none';
  document.getElementById('loginPass').value='';document.getElementById('confirmPass').value='';
  try{await hydrateFamilyData();msg('Conectado como '+(user.email||'usuário autorizado')+'.');}
  catch(e){document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';cloudUser=null;showLoginError(e.message);}
@@ -238,15 +274,15 @@ document.getElementById('registerBtn').addEventListener('click',async()=>{
  finally{setLoginBusy(false);}
 });
 document.getElementById('logoutBtn').addEventListener('click',async function(){
- cloudReady=false;cloudUser=null;if(familyRealtimeChannel&&cloud){cloud.removeChannel(familyRealtimeChannel);familyRealtimeChannel=null;}document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';
+ cloudReady=false;cloudUser=null;document.getElementById('currentUser').textContent='Usuário não identificado';if(familyRealtimeChannel&&cloud){cloud.removeChannel(familyRealtimeChannel);familyRealtimeChannel=null;}document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';
  if(cloud) await cloud.auth.signOut();updateLoginMode();
 });
 updateLoginMode();
 if(cloud){cloud.auth.getSession().then(({data})=>{if(data?.session?.user)enterAfterAuth(data.session.user)});}
 
 const $=id=>document.getElementById(id), brl=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}), today=()=>new Date().toISOString().slice(0,10), monthNow=()=>today().slice(0,7);
-let tx=[],goals=[],wallets=[],budgets=[];
-try{tx=JSON.parse(localStorage.getItem('mf_tx_v1')||'[]');goals=JSON.parse(localStorage.getItem('mf_goals_v1')||'[]');wallets=JSON.parse(localStorage.getItem('mf_wallets_v1')||'[]');budgets=JSON.parse(localStorage.getItem('mf_budgets_v1')||'[]')}catch(e){tx=[];goals=[];wallets=[];budgets=[]}
+let tx=[],goals=[],wallets=[],budgets=[],henriqueSavings=[];
+try{henriqueSavings=JSON.parse(localStorage.getItem('mf_henrique_savings_v1')||'[]');tx=JSON.parse(localStorage.getItem('mf_tx_v1')||'[]');goals=JSON.parse(localStorage.getItem('mf_goals_v1')||'[]');wallets=JSON.parse(localStorage.getItem('mf_wallets_v1')||'[]');budgets=JSON.parse(localStorage.getItem('mf_budgets_v1')||'[]')}catch(e){tx=[];goals=[];wallets=[];budgets=[]}
 if(!wallets.length){wallets=DEFAULT_WALLETS.map(w=>({...w}));}
 tx=tx.map(t=>({...t,walletId:t.walletId||wallets[0].id}));
 function save(){saveLocalOnly();persistCloud(false)}
@@ -265,7 +301,27 @@ function drawBars(id,labels,values,colors){let o=setupCanvas(id);if(!o)return;le
 function drawDonut(id,entries){let o=setupCanvas(id);if(!o)return;let {ctx:c,w,h}=o;c.clearRect(0,0,w,h);let total=entries.reduce((s,x)=>s+x[1],0);if(!total){c.fillStyle='#718078';c.font='12px system-ui';c.textAlign='center';c.fillText('Cadastre despesas para ver o gráfico',w/2,h/2);return}let colors=['#2d7657','#82a96a','#e1b45b','#5688a5','#ba7861','#8b79aa','#60a8a1','#c77d9a','#9ba3aa'];let cx=w*.32,cy=h/2,r=Math.min(65,h*.36),inner=r*.58,start=-Math.PI/2;entries.slice(0,9).forEach((e,i)=>{let angle=e[1]/total*Math.PI*2;c.beginPath();c.moveTo(cx,cy);c.arc(cx,cy,r,start,start+angle);c.closePath();c.fillStyle=colors[i%colors.length];c.fill();start+=angle});c.beginPath();c.arc(cx,cy,inner,0,Math.PI*2);c.fillStyle='#fff';c.fill();c.fillStyle='#1e302a';c.font='bold 11px system-ui';c.textAlign='center';c.fillText('Total',cx,cy-2);c.font='10px system-ui';c.fillText(brl(total),cx,cy+13);c.textAlign='left';let lx=w*.59,ly=Math.max(14,cy-(Math.min(entries.length,5)*27)/2);entries.slice(0,5).forEach((e,i)=>{c.fillStyle=colors[i%colors.length];c.fillRect(lx,ly+i*27,9,9);c.fillStyle='#52655a';c.font='10px system-ui';let label=e[0].length>13?e[0].slice(0,12)+'…':e[0];c.fillText(label,lx+13,ly+9+i*27);c.fillStyle='#1e302a';c.fillText(Math.round(e[1]/total*100)+'%',lx+13,ly+21+i*27)})}
 function renderCharts(month){let data=tx.filter(t=>t.date.startsWith(month));let inc=data.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((s,t)=>s+t.value,0),exp=data.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((s,t)=>s+t.value,0);drawBars('cashChart',['Receitas','Despesas'],[inc,exp],['#2d7657','#c56b58']);let cats={};data.filter(t=>t.kind==='Despesa').forEach(t=>cats[t.cat]=(cats[t.cat]||0)+t.value);drawDonut('categoryChart',Object.entries(cats).sort((a,b)=>b[1]-a[1]));let months=[];let d=new Date(month+'-15T12:00:00');for(let i=5;i>=0;i--){let x=new Date(d.getFullYear(),d.getMonth()-i,15);months.push(x.toISOString().slice(0,7))}let vals=months.map(mm=>{let a=tx.filter(t=>t.date.startsWith(mm));return a.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((s,t)=>s+t.value,0)-a.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((s,t)=>s+t.value,0)});drawBars('trendChart',months.map(mm=>mm.slice(5)),vals,vals.map(v=>v>=0?'#2d7657':'#c56b58'))}
 
-function walletBalance(w){return Number(w.opening||0)+tx.filter(t=>t.walletId===w.id&&t.status!=='Pendente').reduce((sum,t)=>sum+(t.kind==='Receita'?t.value:-t.value),0)}
+function walletBalance(w){return Number(w.opening||0)+(w.owner==='Poupança Henrique'?henriqueSavings.reduce((sum,m)=>sum+Number(m.value||0),0):0)+tx.filter(t=>t.walletId===w.id&&t.status!=='Pendente').reduce((sum,t)=>sum+(t.kind==='Receita'?t.value:-t.value),0)}
+
+function renderHenriqueSavings(){
+ const w=wallets.find(x=>x.owner==='Poupança Henrique'||x.id==='wallet-henrique-savings');
+ const walletId=w?.id;
+ const movements=henriqueSavings.slice().sort((a,b)=>b.date.localeCompare(a.date));
+ const deposits=movements.reduce((sum,t)=>sum+Number(t.value||0),0);
+ $('henriqueBalance').textContent=brl(w?Number(w.opening||0)+deposits:deposits);
+ $('henriqueDeposits').textContent=brl(deposits);
+ $('henriqueCount').textContent=String(movements.length);
+ $('henriqueHistory').innerHTML=movements.length?movements.map(t=>`<div class="item"><div class="itemmain"><strong>${esc(t.desc)}</strong><small>${t.date.split('-').reverse().join('/')}</small></div><strong class="amount green">+${brl(t.value)}</strong></div>`).join(''):'<div class="empty">Nenhum depósito ou movimentação registrada ainda.</div>';
+}
+$('henriqueDate').value=today();
+$('henriqueForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ let w=wallets.find(x=>x.owner==='Poupança Henrique'||x.id==='wallet-henrique-savings');
+ if(!w){w={id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0};wallets.push(w)}
+ henriqueSavings.push({id:crypto.randomUUID(),value:Math.round(Number($('henriqueValue').value)*100)/100,desc:($('henriqueDesc').value.trim()||'Depósito Poupança Henrique'),date:$('henriqueDate').value});
+ save();e.target.reset();$('henriqueDate').value=today();render();msg('Depósito registrado na Poupança Henrique.');
+});
+
 function renderWallets(){
  const select=$('walletSelect');if(select){let prev=select.value;select.innerHTML=wallets.map(w=>`<option value="${esc(w.id)}">${esc(w.owner)} · ${esc(w.name)}</option>`).join('');if(wallets.some(w=>w.id===prev))select.value=prev}
  const owners=['Minha carteira','Carteira da esposa','Poupança Henrique'];
@@ -322,13 +378,14 @@ document.getElementById('resetPlan').addEventListener('click',()=>{if(confirm('R
 planKeys.forEach(id=>$(id).addEventListener('input',renderPlanning));
 loadPlanSettings();
 
-function render(){renderWallets();let m=$('monthFilter').value||monthNow(), rm=$('reportMonth').value||monthNow(), inMonth=tx.filter(t=>t.date.startsWith(m)), rin=inMonth.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((a,t)=>a+t.value,0), rex=inMonth.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((a,t)=>a+t.value,0), pending=inMonth.filter(t=>t.status==='Pendente').reduce((a,t)=>a+(t.kind==='Despesa'?-t.value:t.value),0);
+function render(){renderWallets();renderHenriqueSavings();let m=$('monthFilter').value||monthNow(), rm=$('reportMonth').value||monthNow(), inMonth=tx.filter(t=>t.date.startsWith(m)), rin=inMonth.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((a,t)=>a+t.value,0), rex=inMonth.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((a,t)=>a+t.value,0), pending=inMonth.filter(t=>t.status==='Pendente').reduce((a,t)=>a+(t.kind==='Despesa'?-t.value:t.value),0);
 $('balance').textContent=brl(tx.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((a,t)=>a+t.value,0)-tx.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((a,t)=>a+t.value,0));$('income').textContent=brl(rin);$('expense').textContent=brl(rex);$('forecast').textContent=brl(rin-rex+pending);$('familyAssets').textContent=brl(wallets.reduce((s,w)=>s+walletBalance(w),0));$('savingRate').textContent=rin>0?((rin-rex)/rin*100).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%':'—';
 let next=tx.filter(t=>t.status==='Pendente').sort((a,b)=>a.date.localeCompare(b.date)).slice(0,6);$('upcoming').innerHTML=next.length?next.map(t=>`<div class="item"><div class="itemmain"><strong>${esc(t.desc)}</strong><small>${t.date.split('-').reverse().join('/')} · ${esc(t.cat)}</small></div><div style="text-align:right"><div class="amount ${t.kind==='Receita'?'green':'red'}">${t.kind==='Receita'?'+':'−'}${brl(t.value)}</div>${statusPill(t)}</div></div>`).join(''):'<div class="empty">Nenhuma conta pendente cadastrada.</div>';
 let cats={};inMonth.filter(t=>t.kind==='Despesa').forEach(t=>cats[t.cat]=(cats[t.cat]||0)+t.value);let arr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);$('categories').innerHTML=arr.length?arr.map(([c,v])=>`<div style="margin:13px 0"><div class="row"><span>${esc(c)}</span><strong>${brl(v)}</strong></div><div class="bar"><span style="width:${Math.max(2,v/Math.max(...arr.map(x=>x[1]))*100)}%"></span></div></div>`).join(''):'<div class="empty">As categorias aparecerão após cadastrar despesas.</div>';
-let f=$('txFilter').value, list=tx.filter(t=>f==='Todos'||t.kind===f||t.status===f).sort((a,b)=>b.date.localeCompare(a.date));$('txList').innerHTML=list.length?list.map(t=>`<div class="item"><div class="itemmain"><strong>${esc(t.desc)}</strong><small>${esc(t.cat)} · ${esc(wallets.find(w=>w.id===t.walletId)?.name||'Carteira não definida')} · ${t.date.split('-').reverse().join('/')}<br>${statusPill(t)}</small></div><div style="text-align:right"><div class="amount ${t.kind==='Receita'?'green':'red'}">${t.kind==='Receita'?'+':'−'}${brl(t.value)}</div><div class="actions no-print" style="justify-content:flex-end;margin-top:6px">${t.status==='Pendente'?`<button class="secondary" style="padding:6px 8px;font-size:12px" onclick="settle('${t.id}')">Baixar</button>`:''}<button class="danger" style="padding:6px 8px;font-size:12px" onclick="removeTx('${t.id}')">Excluir</button></div></div></div>`).join(''):'<div class="empty">Nenhum lançamento ainda. Adicione sua primeira receita ou despesa.</div>';
+let f=$('txFilter').value, list=tx.filter(t=>f==='Todos'||t.kind===f||t.status===f).sort((a,b)=>b.date.localeCompare(a.date));$('txList').innerHTML=list.length?list.map(t=>`<div class="item"><div class="itemmain"><strong>${esc(t.desc)}</strong><small>${esc(t.cat)} · ${esc(wallets.find(w=>w.id===t.walletId)?.name||'Carteira não definida')} · ${t.date.split('-').reverse().join('/')}<br>${statusPill(t)}</small></div><div style="text-align:right"><div class="amount ${t.kind==='Receita'?'green':'red'}">${t.kind==='Receita'?'+':'−'}${brl(t.value)}</div><div class="actions no-print" style="justify-content:flex-end;margin-top:6px">${t.status==='Pendente'?`<button class="secondary" style="padding:6px 8px;font-size:12px" onclick="settle('${t.id}')">Baixar</button>`:''}<button class="secondary" style="padding:6px 8px;font-size:12px" onclick="editTx('${t.id}')">Editar</button><button class="danger" style="padding:6px 8px;font-size:12px" onclick="removeTx('${t.id}')">Excluir</button></div></div></div>`).join(''):'<div class="empty">Nenhum lançamento ainda. Adicione sua primeira receita ou despesa.</div>';
 $('goalList').innerHTML=goals.length?goals.map(g=>`<div class="item" style="display:block"><div class="row"><strong>${esc(g.name)}</strong><button class="danger no-print" style="padding:6px 9px" onclick="removeGoal('${g.id}')">Excluir</button></div><div class="big">${Math.min(100,Math.round(g.saved/g.target*100))}%</div><div class="bar"><span style="width:${Math.min(100,g.saved/g.target*100)}%"></span></div><div class="row"><small>${brl(g.saved)} de ${brl(g.target)}</small><small>${g.date?'Prazo: '+g.date.split('-').reverse().join('/'):''}</small></div><div class="actions no-print"><button class="secondary" onclick="contribute('${g.id}',100)">+ R$ 100</button><button class="secondary" onclick="contribute('${g.id}',500)">+ R$ 500</button><button class="secondary" onclick="contribute('${g.id}',0)">Registrar valor</button></div></div>`).join(''):'<div class="empty">Crie sua primeira meta para acompanhar seu progresso.</div>';
 let rtx=tx.filter(t=>t.date.startsWith(rm)), ri=rtx.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((a,t)=>a+t.value,0), re=rtx.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((a,t)=>a+t.value,0), rp=rtx.filter(t=>t.status==='Pendente').reduce((a,t)=>a+t.value,0);$('rIncome').textContent=brl(ri);$('rExpense').textContent=brl(re);$('rResult').textContent=brl(ri-re);$('rPending').textContent=brl(rp);let by={};rtx.forEach(t=>{let k=t.kind+' · '+t.cat;by[k]=(by[k]||0)+t.value});$('reportDetails').innerHTML=Object.entries(by).length?Object.entries(by).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="item"><div class="itemmain">${esc(k)}</div><strong>${brl(v)}</strong></div>`).join(''):'<div class="empty">Sem dados para este mês.</div>';renderCharts(m);renderBudgets();renderPlanning();$('quick300').textContent=brl(300*60);$('quick500').textContent=brl(500*60);$('quick1000').textContent=brl(1000*60)}
+function editTx(id){let t=tx.find(x=>x.id===id);if(!t)return;let desc=prompt('Descrição do lançamento:',t.desc);if(desc===null)return;let value=prompt('Valor (R$):',String(t.value));if(value===null||!Number.isFinite(Number(value))||Number(value)<=0)return msg('Informe um valor válido.');let date=prompt('Data de vencimento (AAAA-MM-DD):',t.date);if(date===null)return;if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return msg('Use a data no formato AAAA-MM-DD.');t.desc=desc.trim()||t.desc;t.value=Math.round(Number(value)*100)/100;t.date=date;save();render();msg('Lançamento editado.')}
 function settle(id){let t=tx.find(x=>x.id===id);if(t){t.status=t.kind==='Receita'?'Recebido':'Pago';save();render();msg('Lançamento atualizado.')}}
 function removeTx(id){if(confirm('Excluir este lançamento?')){tx=tx.filter(t=>t.id!==id);save();render()}}
 $('goalForm').addEventListener('submit',e=>{e.preventDefault();goals.push({id:crypto.randomUUID(),name:$('gname').value.trim(),target:Number($('gtarget').value),saved:Number($('gsaved').value)||0,date:$('gdate').value});save();e.target.reset();render();msg('Meta criada.')});
@@ -336,9 +393,9 @@ function removeGoal(id){if(confirm('Excluir esta meta?')){goals=goals.filter(g=>
 function contribute(id,amount){let g=goals.find(x=>x.id===id);if(!g)return;if(amount===0){let v=prompt('Informe o valor total já guardado (R$):',String(g.saved));if(v===null||!Number.isFinite(Number(v))||Number(v)<0)return;g.saved=Number(v)}else g.saved=Math.min(g.target,g.saved+amount);save();render()}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 function exportCSV(){let rows=[['Tipo','Descrição','Categoria','Carteira/conta','Responsável','Valor (R$)','Data','Situação','Recorrência'],...tx.map(t=>{let w=wallets.find(x=>x.id===t.walletId);return [t.kind,t.desc,t.cat,w?.name||'',w?.owner||'',t.value.toFixed(2).replace('.',','),t.date,t.status,t.recurrence]})];let blob=new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8;'});download(blob,'meu-financeiro-lancamentos.csv')}
-function backup(){download(new Blob([JSON.stringify({version:3,exportedAt:new Date().toISOString(),transactions:tx,goals,wallets,budgets,plan:readPlan()},null,2)],{type:'application/json'}),'meu-financeiro-backup.json')}
+function backup(){download(new Blob([JSON.stringify({version:3,exportedAt:new Date().toISOString(),transactions:tx,goals,wallets,budgets,henriqueSavings,plan:readPlan()},null,2)],{type:'application/json'}),'meu-financeiro-backup.json')}
 function download(blob,name){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-$('restoreBtn').addEventListener('click',async()=>{let f=$('restoreFile').files[0];if(!f)return msg('Selecione um arquivo JSON.');try{let d=JSON.parse(await f.text());if(!Array.isArray(d.transactions)||!Array.isArray(d.goals))throw Error();if(!confirm('Restaurar substituirá os dados atuais. Continuar?'))return;tx=d.transactions;goals=d.goals;wallets=Array.isArray(d.wallets)?d.wallets:wallets;budgets=Array.isArray(d.budgets)?d.budgets:[];save();if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));loadPlanSettings()}render();persistCloud(true);msg('Backup restaurado.')}catch(e){msg('Arquivo inválido ou incompatível.')}});
-$('clearData').addEventListener('click',()=>{if(confirm('Tem certeza? Isso apagará todos os lançamentos e metas deste navegador. Faça backup antes.')){tx=[];goals=[];budgets=[];wallets=[{id:'wallet-personal-cash',owner:'Minha carteira',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-wife-cash',owner:'Carteira da esposa',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0}];localStorage.removeItem('mf_plan_v1');save();render();msg('Dados apagados.')}});
+$('restoreBtn').addEventListener('click',async()=>{let f=$('restoreFile').files[0];if(!f)return msg('Selecione um arquivo JSON.');try{let d=JSON.parse(await f.text());if(!Array.isArray(d.transactions)||!Array.isArray(d.goals))throw Error();if(!confirm('Restaurar substituirá os dados atuais. Continuar?'))return;tx=d.transactions;goals=d.goals;wallets=Array.isArray(d.wallets)?d.wallets:wallets;budgets=Array.isArray(d.budgets)?d.budgets:[];henriqueSavings=Array.isArray(d.henriqueSavings)?d.henriqueSavings:[];save();if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));loadPlanSettings()}render();persistCloud(true);msg('Backup restaurado.')}catch(e){msg('Arquivo inválido ou incompatível.')}});
+$('clearData').addEventListener('click',()=>{if(confirm('Tem certeza? Isso apagará todos os lançamentos e metas deste navegador. Faça backup antes.')){tx=[];goals=[];budgets=[];henriqueSavings=[];wallets=[{id:'wallet-personal-cash',owner:'Minha carteira',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-wife-cash',owner:'Carteira da esposa',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0}];localStorage.removeItem('mf_plan_v1');save();render();msg('Dados apagados.')}});
 render();window.addEventListener('resize',()=>renderCharts($('monthFilter').value||monthNow()));
 </script></body></html>
