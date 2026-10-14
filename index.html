@@ -141,7 +141,7 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 <script>
 
 // IMPORTANTE: use apenas a chave pública/anon do projeto. NUNCA coloque service_role ou senhas administrativas no HTML.
-const SUPABASE_URL = 'https://mgwrrqywatktxskgfuil.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://mgwrrqywatktxskgfuil.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_IogDeLhPc_dbb4Ztuz7Oxw_1zaeW7DN';
 const FAMILY_ID = '447051c8-60f7-4172-9f62-c752f150779d';
 const cloudConfigured = !SUPABASE_URL.startsWith('COLE_') && !SUPABASE_ANON_KEY.startsWith('COLE_') && !FAMILY_ID.startsWith('COLE_') && !!window.supabase;
