@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#12382f"><title>Financeiro Muniz</title>
 <style>
 :root{--green:#12382f;--lime:#d5f28a;--bg:#f4f7f4;--card:#fff;--text:#1e302a;--muted:#718078;--line:#e2e9e4;--red:#b54738;--shadow:0 8px 24px #193d2b0c}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:11px 14px;background:var(--green);color:white;font-weight:650}button.secondary{background:#e8eee9;color:var(--green)}button.danger{background:#fff0ed;color:var(--red)}header{background:var(--green);color:white;padding:22px max(18px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#d1e1d8;font-size:13px}.wrap{max-width:1100px;margin:auto;padding:20px 16px 60px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{white-space:nowrap;background:#e5ece7;color:var(--green)}.nav button.active{background:var(--green);color:white}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:var(--shadow);min-width:0}.label{color:var(--muted);font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em}.big{font-size:clamp(20px,3vw,27px);font-weight:750;margin-top:8px;overflow-wrap:anywhere}.green{color:#21805a}.red{color:var(--red)}.muted{color:var(--muted)}.section{margin-top:22px}.section h2{font-size:18px;margin:0 0 12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:650}.field input,.field select{width:100%;padding:11px;border:1px solid #d8e2db;border-radius:10px;background:white;color:var(--text);min-width:0}.full{grid-column:1/-1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.item{padding:13px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.item:last-child{border-bottom:0}.itemmain{flex:1;min-width:0}.itemmain strong{display:block;overflow-wrap:anywhere}.itemmain small{color:var(--muted)}.amount{font-weight:750;white-space:nowrap}.pill{font-size:11px;padding:4px 8px;border-radius:20px;background:#eef2ef;color:#52655a;display:inline-block}.pill.pending{background:#fff1cf;color:#855d00}.pill.paid{background:#e0f5e8;color:#17623c}.pill.late{background:#ffe7e2;color:#9a3327}.empty{padding:24px;text-align:center;color:var(--muted)}.bar{height:9px;background:#e7ede8;border-radius:20px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:#5d9d75;border-radius:20px}.hidden{display:none!important}.notice{padding:11px 13px;background:#e6f5e9;border-radius:10px;margin-bottom:12px;color:#205b38}.small{font-size:12px}.footer{margin-top:24px;color:var(--muted);font-size:12px;line-height:1.6}.month{max-width:180px;padding:8px;border:1px solid var(--line);border-radius:10px;background:white}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:11px;padding:11px 14px;background:var(--green);color:white;font-weight:650}button.secondary{background:#e8eee9;color:var(--green)}button.danger{background:#fff0ed;color:var(--red)}header{background:var(--green);color:white;padding:22px max(18px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#d1e1d8;font-size:13px}.verse{display:block;margin-top:8px;max-width:680px;color:#e3f0e6;font-size:12px;line-height:1.5;font-style:italic}.verse cite{display:block;margin-top:2px;color:#d5f28a;font-style:normal;font-weight:700}.wrap{max-width:1440px;margin:auto;padding:20px 16px 60px}.app-layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:22px;align-items:start}.content-area{min-width:0}.nav{display:flex;flex-direction:column;gap:7px;overflow:visible;margin:0;padding:12px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);position:sticky;top:14px}.nav button{width:100%;text-align:left;white-space:normal;background:transparent;color:#42574b;border-radius:11px;padding:12px 14px;display:flex;align-items:center;gap:10px}.nav button:before{content:"•";font-size:20px;line-height:10px;color:#8ba596}.nav button.active{background:linear-gradient(120deg,#12382f,#28664b);color:white;box-shadow:0 5px 14px #12382f24}.nav button.active:before{color:#d5f28a}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:var(--shadow);min-width:0}.label{color:var(--muted);font-size:12px;font-weight:650;text-transform:uppercase;letter-spacing:.04em}.big{font-size:clamp(20px,3vw,27px);font-weight:750;margin-top:8px;overflow-wrap:anywhere}.green{color:#21805a}.red{color:var(--red)}.muted{color:var(--muted)}.section{margin-top:22px}.section h2{font-size:18px;margin:0 0 12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:13px;color:var(--muted);font-weight:650}.field input,.field select{width:100%;padding:11px;border:1px solid #d8e2db;border-radius:10px;background:white;color:var(--text);min-width:0}.full{grid-column:1/-1}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.item{padding:13px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.item:last-child{border-bottom:0}.itemmain{flex:1;min-width:0}.itemmain strong{display:block;overflow-wrap:anywhere}.itemmain small{color:var(--muted)}.amount{font-weight:750;white-space:nowrap}.pill{font-size:11px;padding:4px 8px;border-radius:20px;background:#eef2ef;color:#52655a;display:inline-block}.pill.pending{background:#fff1cf;color:#855d00}.pill.paid{background:#e0f5e8;color:#17623c}.pill.late{background:#ffe7e2;color:#9a3327}.empty{padding:24px;text-align:center;color:var(--muted)}.bar{height:9px;background:#e7ede8;border-radius:20px;overflow:hidden;margin:12px 0}.bar span{display:block;height:100%;background:#5d9d75;border-radius:20px}.hidden{display:none!important}.notice{padding:11px 13px;background:#e6f5e9;border-radius:10px;margin-bottom:12px;color:#205b38}.small{font-size:12px}.footer{margin-top:24px;color:var(--muted);font-size:12px;line-height:1.6}.month{max-width:180px;padding:8px;border:1px solid var(--line);border-radius:10px;background:white}
 @media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.wrap{padding:15px 12px 40px}.card{padding:14px}.formgrid{gap:10px}header{padding:18px 14px}}
 @media print{header,.nav,.no-print,button{display:none!important}body{background:white}.wrap{max-width:none;padding:0}.card{box-shadow:none;break-inside:avoid}.section{margin-top:12px}}
 
@@ -25,7 +25,7 @@ header{background:linear-gradient(120deg,#102f28,#1d6048);padding-top:25px;paddi
 header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 .wrap{max-width:1220px;padding-top:22px}
 .card{border-radius:20px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
-.nav{padding:5px 0 10px;scrollbar-width:thin}.nav button{border:1px solid transparent;border-radius:999px;padding:10px 15px}.nav button.active{box-shadow:0 4px 12px #12382f24}
+.nav{scrollbar-width:thin}.nav button{border:1px solid transparent;border-radius:11px;padding:12px 14px}.nav button.active{box-shadow:0 4px 12px #12382f24}
 .big{letter-spacing:-.7px}button{transition:filter .15s ease,transform .15s ease}button:hover{filter:brightness(1.04)}button:active{transform:scale(.985)}
 .field input:focus,.field select:focus{outline:3px solid #d5f28a80;border-color:#5c906e}
 .hero{background:linear-gradient(120deg,#143b30,#28664b);color:#fff;border:0;overflow:hidden;position:relative}.hero h2,.hero .label{color:#e4f2e8}.hero .big{color:#fff;font-size:clamp(28px,5vw,38px)}.hero p{color:#d1e4d7}
@@ -33,7 +33,8 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 .projection-highlight{background:linear-gradient(135deg,#e8f4e8,#f7faee);border:1px solid #d7e8d7;border-radius:16px;padding:16px}
 .result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.result-tile{padding:13px;border-radius:14px;background:#f5f8f5;border:1px solid var(--line);min-width:0}.result-tile strong{display:block;font-size:clamp(17px,2.6vw,23px);margin-top:5px;overflow-wrap:anywhere}
 .table-wrap{overflow-x:auto}.data-table{width:100%;border-collapse:collapse;font-size:13px}.data-table th,.data-table td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);white-space:nowrap}.data-table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
-@media(max-width:720px){header{padding:18px 14px}.wrap{padding:14px 11px 36px}.card{border-radius:16px}.result-grid{grid-template-columns:1fr}.nav{margin-right:-4px}.nav button{padding:9px 12px;font-size:13px}}
+@media(max-width:820px){.app-layout{grid-template-columns:1fr;gap:14px}.nav{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:9px}.nav button{font-size:13px;padding:10px 9px}.content-area{min-width:0}}
+@media(max-width:720px){header{padding:18px 14px}.wrap{padding:14px 11px 36px}.card{border-radius:16px}.result-grid{grid-template-columns:1fr}.nav{margin:0}.nav button{padding:10px 9px;font-size:12px}.verse{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head>
 <body class="locked">
@@ -41,24 +42,25 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 <div id="loginScreen" class="login-screen">
   <div class="login-card">
     <h1>◈ Financeiro Muniz</h1>
-    <p id="loginIntro">Entre com seu usuário e senha para acessar suas finanças.</p>
+    <p id="loginIntro">Entre com seu e-mail e senha. Seu acesso será sincronizado pela internet.</p>
     <form id="loginForm">
-      <div class="field"><label for="loginUser">Usuário</label><input id="loginUser" autocomplete="username" required maxlength="60" placeholder="Crie ou informe seu usuário"></div>
+      <div class="field"><label for="loginUser">E-mail</label><input id="loginUser" type="email" autocomplete="username" required maxlength="254" placeholder="seuemail@exemplo.com"></div>
       <div class="field"><label for="loginPass">Senha</label><input id="loginPass" type="password" autocomplete="current-password" required minlength="6" maxlength="200" placeholder="Mínimo de 6 caracteres"></div>
-      <div class="field" id="confirmPassField" style="display:none"><label for="confirmPass">Confirme a senha</label><input id="confirmPass" type="password" autocomplete="new-password" minlength="6" maxlength="200" placeholder="Digite a senha novamente"></div>
+      <div class="field" id="confirmPassField" style="display:none"><label for="confirmPass">Confirme a senha</label><input id="confirmPass" type="password" autocomplete="new-password" minlength="8" maxlength="200" placeholder="Digite a senha novamente"></div>
       <button id="loginSubmit" type="submit">Entrar</button>
+      <button id="registerBtn" type="button" class="secondary">Criar minha conta</button>
       <div id="loginError" class="login-error" role="alert"></div>
     </form>
-    <p class="small">Na primeira utilização, você criará seu usuário e senha.</p>
+    <p class="small">Cada pessoa usa seu próprio e-mail e senha. O acesso familiar só funciona depois de configurar o banco de dados e autorizar os dois usuários.</p>
   </div>
 </div>
 
-<header><div><h1>◈ Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p></div><div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" onclick="exportCSV()">Exportar Excel/CSV</button><button onclick="window.print()">Salvar relatório PDF</button><button id="logoutBtn" class="secondary" type="button">Sair</button></div></header>
+<header><div><h1>◈ Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p><div class="verse">“Os planos do diligente tendem à abundância, mas a pressa excessiva, à pobreza.”<cite>Provérbios 21:5</cite></div></div><div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" onclick="exportCSV()">Exportar Excel/CSV</button><button onclick="window.print()">Salvar relatório PDF</button><button id="logoutBtn" class="secondary" type="button">Sair</button></div></header>
 <main class="wrap">
 <div id="notice" class="notice hidden" role="status"></div>
-<nav class="nav no-print" id="nav">
+<div class="app-layout"><nav class="nav no-print" id="nav" aria-label="Navegação principal">
 <button class="active" data-page="dashboard">Visão geral</button><button data-page="wallets">Carteiras</button><button data-page="transactions">Lançamentos</button><button data-page="budgets">Orçamento</button><button data-page="goals">Metas</button><button data-page="planning">Meu futuro</button><button data-page="reports">Relatórios</button><button data-page="backup">Backup e dados</button>
-</nav>
+</nav><div class="content-area">
 <section id="dashboard" class="page">
 <div class="row" style="margin-bottom:12px;flex-wrap:wrap"><div><h2 style="margin:0">Seu resumo financeiro</h2><div class="muted small">Valores calculados com base nos lançamentos cadastrados.</div></div><input class="month no-print" type="month" id="monthFilter"></div>
 <div class="grid">
@@ -132,74 +134,122 @@ header h1{font-size:clamp(22px,4vw,29px);letter-spacing:-.6px}
 
 <section id="goals" class="page hidden"><div class="two"><div class="card"><h2>Criar uma meta</h2><form id="goalForm"><div class="field"><label for="gname">Nome do objetivo</label><input id="gname" required maxlength="100" placeholder="Ex.: reserva de emergência"></div><div class="field" style="margin-top:12px"><label for="gtarget">Valor desejado (R$)</label><input id="gtarget" type="number" min=".01" step=".01" required placeholder="10000"></div><div class="field" style="margin-top:12px"><label for="gsaved">Quanto já guardou (R$)</label><input id="gsaved" type="number" min="0" step=".01" value="0"></div><div class="field" style="margin-top:12px"><label for="gdate">Prazo (opcional)</label><input id="gdate" type="date"></div><div class="actions"><button>Criar meta</button></div></form></div><div class="card"><h2>Metas em andamento</h2><div id="goalList"></div></div></div></section>
 <section id="reports" class="page hidden"><div class="card"><div class="row" style="flex-wrap:wrap"><div><h2 style="margin:0">Relatório mensal</h2><div class="muted small">Resumo por competência e categoria.</div></div><input type="month" id="reportMonth" class="month"></div><div class="grid section"><div><div class="label">Receitas recebidas</div><div class="big green" id="rIncome">R$ 0,00</div></div><div><div class="label">Despesas pagas</div><div class="big red" id="rExpense">R$ 0,00</div></div><div><div class="label">Resultado</div><div class="big" id="rResult">R$ 0,00</div></div><div><div class="label">Pendências</div><div class="big" id="rPending">R$ 0,00</div></div></div><h2 class="section">Detalhamento</h2><div id="reportDetails"></div><div class="actions no-print"><button onclick="window.print()">Imprimir / salvar PDF</button><button class="secondary" onclick="exportCSV()">Exportar dados CSV</button></div></div></section>
-<section id="backup" class="page hidden"><div class="two"><div class="card"><h2>Backup dos seus dados</h2><p>Exporte um arquivo JSON para guardar lançamentos, carteiras, metas, limites de orçamento e parâmetros do planejamento. Faça backups regularmente e mantenha-os em local privado.</p><div class="actions"><button onclick="backup()">Baixar backup JSON</button></div><div class="field section"><label for="restoreFile">Restaurar backup JSON</label><input id="restoreFile" type="file" accept=".json,application/json"></div><button class="secondary section" id="restoreBtn">Restaurar arquivo selecionado</button></div><div class="card"><h2>Privacidade e armazenamento</h2><p>Esta versão salva os dados neste navegador usando armazenamento local. Os dados não são sincronizados automaticamente entre aparelhos e podem ser perdidos se os dados do navegador forem apagados.</p><p><strong>Para uso real com sincronização:</strong> publique o site com login individual e banco de dados protegido por regras de acesso. Nunca guarde senhas bancárias ou dados completos de cartões aqui.</p><button class="danger no-print" id="clearData">Apagar todos os dados deste navegador</button></div></div></section>
-<div class="footer">Financeiro Muniz · Controle financeiro familiar, não conectado aos bancos. Faça backups frequentes. Projeções são cenários hipotéticos, não garantias de rendimento. Os dados ficam neste navegador e não sincronizam automaticamente entre dispositivos.</div>
+<section id="backup" class="page hidden"><div class="two"><div class="card"><h2>Backup dos seus dados</h2><p>Exporte um arquivo JSON para guardar lançamentos, carteiras, metas, limites de orçamento e parâmetros do planejamento. Faça backups regularmente e mantenha-os em local privado.</p><div class="actions"><button onclick="backup()">Baixar backup JSON</button></div><div class="field section"><label for="restoreFile">Restaurar backup JSON</label><input id="restoreFile" type="file" accept=".json,application/json"></div><button class="secondary section" id="restoreBtn">Restaurar arquivo selecionado</button></div><div class="card"><h2>Privacidade e armazenamento</h2><p>Com a configuração do Supabase concluída, os dados são sincronizados na conta familiar. O armazenamento local serve apenas como cópia temporária; faça backups JSON regulares.</p><p><strong>Para uso real com sincronização:</strong> publique o site com login individual e banco de dados protegido por regras de acesso. Nunca guarde senhas bancárias ou dados completos de cartões aqui.</p><button class="danger no-print" id="clearData">Apagar todos os dados deste navegador</button></div></div></section>
+</div></div><div class="footer">Financeiro Muniz · Controle financeiro familiar, não conectado aos bancos. Faça backups frequentes. Projeções são cenários hipotéticos, não garantias de rendimento. Quando conectado ao Supabase, os dados da família sincronizam entre aparelhos autorizados. Faça backups frequentes.</div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 
-// Bloqueio local por usuário e senha. Para segurança forte e sincronização, use hospedagem HTTPS com autenticação no servidor.
-const AUTH_KEY = 'financeiroMunizAuthV1';
-const encoder = new TextEncoder();
-async function passwordDigest(password, salt) {
-  if (!window.crypto || !crypto.subtle) throw new Error('Este navegador não oferece criptografia segura nesta abertura. Abra o Financeiro Muniz em um endereço HTTPS.');
-  const key = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits']);
-  const bits = await crypto.subtle.deriveBits({name:'PBKDF2', salt:encoder.encode(salt), iterations:150000, hash:'SHA-256'}, key, 256);
-  return Array.from(new Uint8Array(bits)).map(b=>b.toString(16).padStart(2,'0')).join('');
+// IMPORTANTE: use apenas a chave pública/anon do projeto. NUNCA coloque service_role ou senhas administrativas no HTML.
+const SUPABASE_URL = 'COLE_A_URL_DO_SEU_PROJETO_SUPABASE';
+const SUPABASE_ANON_KEY = 'COLE_A_CHAVE_PUBLICA_ANON_DO_SUPABASE';
+const FAMILY_ID = 'COLE_AQUI_O_UUID_DA_FAMILIA_CRIADO_NO_SQL';
+const cloudConfigured = !SUPABASE_URL.startsWith('COLE_') && !SUPABASE_ANON_KEY.startsWith('COLE_') && !FAMILY_ID.startsWith('COLE_') && !!window.supabase;
+const cloud = cloudConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}) : null;
+let cloudUser = null, cloudReady = false, cloudSaveQueue = Promise.resolve(), familyRealtimeChannel = null;
+const DEFAULT_WALLETS = [
+ {id:'wallet-personal-cash',owner:'Minha carteira',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
+ {id:'wallet-wife-cash',owner:'Carteira da esposa',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
+ {id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0}
+];
+function localSnapshot(){
+ let plan=null;try{plan=JSON.parse(localStorage.getItem('mf_plan_v1')||'null')}catch(e){}
+ return {version:3,transactions:tx,goals,wallets,budgets,plan};
 }
-function getAuth() { try { return JSON.parse(localStorage.getItem(AUTH_KEY) || 'null'); } catch (_) { return null; } }
-function updateLoginMode() {
-  const setup = !getAuth();
-  document.getElementById('loginIntro').textContent = setup
-    ? 'Crie seu usuário e senha para bloquear o acesso a este navegador.'
-    : 'Entre com seu usuário e senha para acessar suas finanças.';
-  document.getElementById('confirmPassField').style.display = setup ? '' : 'none';
-  document.getElementById('confirmPass').required = setup;
-  document.getElementById('loginSubmit').textContent = setup ? 'Criar usuário e acessar' : 'Entrar';
+function applySnapshot(d){
+ if(!d || typeof d!=='object') return;
+ if(Array.isArray(d.transactions)) tx=d.transactions;
+ if(Array.isArray(d.goals)) goals=d.goals;
+ if(Array.isArray(d.wallets) && d.wallets.length) wallets=d.wallets;
+ if(Array.isArray(d.budgets)) budgets=d.budgets;
+ if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));if(typeof loadPlanSettings==='function')loadPlanSettings();}
+ tx=tx.map(t=>({...t,walletId:t.walletId||(wallets[0]&&wallets[0].id)}));
+ localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));
 }
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
-  event.preventDefault();
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value;
-  const err = document.getElementById('loginError');
-  const current = getAuth();
-  err.textContent = '';
-  try {
-    if (!user || pass.length < 6) throw new Error('Informe um usuário e uma senha com pelo menos 6 caracteres.');
-    if (!current) {
-      if (pass !== document.getElementById('confirmPass').value) throw new Error('As senhas não coincidem.');
-      const salt = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('');
-      const hash = await passwordDigest(pass, salt);
-      localStorage.setItem(AUTH_KEY, JSON.stringify({user:user.toLowerCase(), salt:salt, hash:hash}));
-      unlockFinance();
-    } else {
-      if (user.toLowerCase() !== current.user || await passwordDigest(pass, current.salt) !== current.hash) {
-        throw new Error('Usuário ou senha incorretos.');
-      }
-      unlockFinance();
-    }
-  } catch (e) { err.textContent = e.message || 'Não foi possível entrar. Tente novamente.'; }
+function showLoginError(text){document.getElementById('loginError').textContent=text;}
+function setLoginBusy(busy){document.getElementById('loginSubmit').disabled=busy;document.getElementById('registerBtn').disabled=busy;}
+function updateLoginMode(){
+ document.getElementById('loginIntro').textContent=cloudConfigured
+  ? 'Entre com seu e-mail e senha para acessar os dados compartilhados da família.'
+  : 'O sistema precisa ser conectado ao Supabase antes de criar usuários e sincronizar dados.';
+ document.getElementById('confirmPassField').style.display='none';
+ document.getElementById('confirmPass').required=false;
+ document.getElementById('loginSubmit').textContent='Entrar';
+ document.getElementById('registerBtn').textContent='Criar minha conta';
+ if(!cloudConfigured){document.getElementById('loginError').textContent='Configuração pendente: configure URL, chave pública e ID familiar no arquivo index.html.';document.getElementById('loginSubmit').disabled=true;document.getElementById('registerBtn').disabled=true;}
+}
+async function hydrateFamilyData(){
+ const {data,error}=await cloud.from('family_data').select('data').eq('family_id',FAMILY_ID).single();
+ if(error) throw new Error('Não foi possível carregar os dados da família. Confirme se seu usuário foi autorizado no banco. ('+error.message+')');
+ const d=data?.data||{};
+ const hasCloudData=Array.isArray(d.transactions)||Array.isArray(d.goals)||Array.isArray(d.wallets)||Array.isArray(d.budgets);
+ if(hasCloudData){applySnapshot(d);}
+ else {
+   // Primeiro acesso: preserva e oferece migrar dados locais existentes para a nuvem.
+   let localHasData=false;try{const ltx=JSON.parse(localStorage.getItem('mf_tx_v1')||'[]'),lg=JSON.parse(localStorage.getItem('mf_goals_v1')||'[]'),lb=JSON.parse(localStorage.getItem('mf_budgets_v1')||'[]'),lw=JSON.parse(localStorage.getItem('mf_wallets_v1')||'[]');localHasData=ltx.length>0||lg.length>0||lb.length>0||lw.some(w=>!['wallet-personal-cash','wallet-wife-cash','wallet-henrique-savings'].includes(w.id)||(Number(w.opening)||0)!==0)}catch(e){}
+   if(localHasData && confirm('Encontramos dados salvos neste aparelho. Deseja importá-los para o banco familiar compartilhado?')){
+     const snap=localSnapshot();applySnapshot(snap);cloudReady=true;await persistCloud(true);
+   } else {
+     tx=[];goals=[];wallets=DEFAULT_WALLETS.map(w=>({...w}));budgets=[];saveLocalOnly();cloudReady=true;await persistCloud(true);
+   }
+ }
+ cloudReady=true;render();
+ if(familyRealtimeChannel){cloud.removeChannel(familyRealtimeChannel);familyRealtimeChannel=null;}
+ familyRealtimeChannel=cloud.channel('financeiro-muniz-family-'+FAMILY_ID).on('postgres_changes',{event:'UPDATE',schema:'public',table:'family_data',filter:'family_id=eq.'+FAMILY_ID},payload=>{if(!cloudUser||payload.new?.updated_by===cloudUser.id)return;applySnapshot(payload.new.data||{});render();msg('Dados familiares atualizados em outro aparelho.');}).subscribe();
+}
+function saveLocalOnly(){localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));}
+async function persistCloud(showStatus=false){
+ if(!cloud || !cloudUser || !cloudReady) return;
+ const payload=localSnapshot();
+ cloudSaveQueue=cloudSaveQueue.catch(()=>{}).then(async()=>{
+   const {error}=await cloud.from('family_data').upsert({family_id:FAMILY_ID,data:payload,updated_by:cloudUser.id,updated_at:new Date().toISOString()},{onConflict:'family_id'});
+   if(error) throw error;
+ });
+ try{await cloudSaveQueue;if(showStatus)msg('Dados sincronizados com a nuvem.');}
+ catch(e){console.error('Falha ao sincronizar:',e);msg('Atenção: não foi possível sincronizar. Faça um backup e confira a conexão.');}
+}
+async function enterAfterAuth(user){
+ cloudUser=user;document.body.classList.remove('locked');document.getElementById('loginScreen').style.display='none';
+ document.getElementById('loginPass').value='';document.getElementById('confirmPass').value='';
+ try{await hydrateFamilyData();msg('Conectado como '+(user.email||'usuário autorizado')+'.');}
+ catch(e){document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';cloudUser=null;showLoginError(e.message);}
+}
+document.getElementById('loginForm').addEventListener('submit',async function(event){
+ event.preventDefault();if(!cloudConfigured){updateLoginMode();return;}
+ setLoginBusy(true);showLoginError('');
+ try{
+  const email=document.getElementById('loginUser').value.trim().toLowerCase(),password=document.getElementById('loginPass').value;
+  const {data,error}=await cloud.auth.signInWithPassword({email,password});
+  if(error)throw error;await enterAfterAuth(data.user);
+ }catch(e){showLoginError('Não foi possível entrar: '+(e.message||'confira o e-mail e a senha.'));}
+ finally{setLoginBusy(false);}
 });
-function unlockFinance() {
-  document.body.classList.remove('locked');
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('loginPass').value = '';
-  document.getElementById('confirmPass').value = '';
-}
-document.getElementById('logoutBtn').addEventListener('click', function() {
-  document.body.classList.add('locked');
-  document.getElementById('loginScreen').style.display = 'flex';
-  document.getElementById('loginUser').value = '';
-  document.getElementById('loginPass').value = '';
-  updateLoginMode();
+document.getElementById('registerBtn').addEventListener('click',async()=>{
+ if(!cloudConfigured){updateLoginMode();return;}
+ const email=document.getElementById('loginUser').value.trim().toLowerCase(),password=document.getElementById('loginPass').value;
+ if(!email || password.length<8){showLoginError('Informe um e-mail válido e uma senha com pelo menos 8 caracteres.');return;}
+ setLoginBusy(true);showLoginError('');
+ try{
+  const {data,error}=await cloud.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname}});
+  if(error)throw error;
+  if(data.session && data.user) await enterAfterAuth(data.user);
+  else showLoginError('Conta criada. Confirme o e-mail enviado pelo Supabase e depois entre. Um administrador precisa autorizar este usuário como membro da família no banco.');
+ }catch(e){showLoginError('Não foi possível criar a conta: '+(e.message||'tente novamente.'));}
+ finally{setLoginBusy(false);}
+});
+document.getElementById('logoutBtn').addEventListener('click',async function(){
+ cloudReady=false;cloudUser=null;if(familyRealtimeChannel&&cloud){cloud.removeChannel(familyRealtimeChannel);familyRealtimeChannel=null;}document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';
+ if(cloud) await cloud.auth.signOut();updateLoginMode();
 });
 updateLoginMode();
+if(cloud){cloud.auth.getSession().then(({data})=>{if(data?.session?.user)enterAfterAuth(data.session.user)});}
 
 const $=id=>document.getElementById(id), brl=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}), today=()=>new Date().toISOString().slice(0,10), monthNow=()=>today().slice(0,7);
 let tx=[],goals=[],wallets=[],budgets=[];
 try{tx=JSON.parse(localStorage.getItem('mf_tx_v1')||'[]');goals=JSON.parse(localStorage.getItem('mf_goals_v1')||'[]');wallets=JSON.parse(localStorage.getItem('mf_wallets_v1')||'[]');budgets=JSON.parse(localStorage.getItem('mf_budgets_v1')||'[]')}catch(e){tx=[];goals=[];wallets=[];budgets=[]}
-if(!wallets.length){wallets=[{id:'wallet-personal-cash',owner:'Minha carteira',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-wife-cash',owner:'Carteira da esposa',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0}];}
+if(!wallets.length){wallets=DEFAULT_WALLETS.map(w=>({...w}));}
 tx=tx.map(t=>({...t,walletId:t.walletId||wallets[0].id}));
-function save(){localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets))}
+function save(){saveLocalOnly();persistCloud(false)}
 function msg(s){$('notice').textContent=s;$('notice').classList.remove('hidden');setTimeout(()=>$('notice').classList.add('hidden'),3500)}
 function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==page));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));render();window.scrollTo({top:0,behavior:'smooth'})}
 $('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-page]');if(b)go(b.dataset.page)});
@@ -242,7 +292,7 @@ function moneyForGoal(target,initial,annualRate,years){
   return Math.max(0,(target-base)/factor);
 }
 function readPlan(){return {current:num('planCurrent'),monthly:num('planMonthly'),rate:Math.min(40,num('planRate')),years:Math.max(1,Number($('planYears').value)||10),inflation:Math.min(30,num('planInflation')),target:num('planTarget')}}
-function savePlanSettings(){localStorage.setItem('mf_plan_v1',JSON.stringify(readPlan()))}
+function savePlanSettings(){localStorage.setItem('mf_plan_v1',JSON.stringify(readPlan()));persistCloud(false)}
 function loadPlanSettings(){try{const p=JSON.parse(localStorage.getItem('mf_plan_v1')||'null');if(p){$('planCurrent').value=p.current??0;$('planMonthly').value=p.monthly??500;$('planRate').value=p.rate??5;$('planYears').value=String(p.years??10);$('planInflation').value=p.inflation??4;$('planTarget').value=p.target??100000}else{$('planCurrent').value=wallets.reduce((s,w)=>s+walletBalance(w),0);}}catch(e){}}
 function renderPlanning(){
   const p=readPlan(), f=futureValue(p.current,p.monthly,p.rate,p.years), real=f.balance/Math.pow(1+p.inflation/100,p.years), req=moneyForGoal(p.target,p.current,p.rate,p.years);
@@ -286,9 +336,9 @@ function removeGoal(id){if(confirm('Excluir esta meta?')){goals=goals.filter(g=>
 function contribute(id,amount){let g=goals.find(x=>x.id===id);if(!g)return;if(amount===0){let v=prompt('Informe o valor total já guardado (R$):',String(g.saved));if(v===null||!Number.isFinite(Number(v))||Number(v)<0)return;g.saved=Number(v)}else g.saved=Math.min(g.target,g.saved+amount);save();render()}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 function exportCSV(){let rows=[['Tipo','Descrição','Categoria','Carteira/conta','Responsável','Valor (R$)','Data','Situação','Recorrência'],...tx.map(t=>{let w=wallets.find(x=>x.id===t.walletId);return [t.kind,t.desc,t.cat,w?.name||'',w?.owner||'',t.value.toFixed(2).replace('.',','),t.date,t.status,t.recurrence]})];let blob=new Blob(['\ufeff'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8;'});download(blob,'meu-financeiro-lancamentos.csv')}
-function backup(){download(new Blob([JSON.stringify({version:2,exportedAt:new Date().toISOString(),transactions:tx,goals,wallets,budgets,plan:readPlan()},null,2)],{type:'application/json'}),'meu-financeiro-backup.json')}
+function backup(){download(new Blob([JSON.stringify({version:3,exportedAt:new Date().toISOString(),transactions:tx,goals,wallets,budgets,plan:readPlan()},null,2)],{type:'application/json'}),'meu-financeiro-backup.json')}
 function download(blob,name){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-$('restoreBtn').addEventListener('click',async()=>{let f=$('restoreFile').files[0];if(!f)return msg('Selecione um arquivo JSON.');try{let d=JSON.parse(await f.text());if(!Array.isArray(d.transactions)||!Array.isArray(d.goals))throw Error();if(!confirm('Restaurar substituirá os dados atuais. Continuar?'))return;tx=d.transactions;goals=d.goals;wallets=Array.isArray(d.wallets)?d.wallets:wallets;budgets=Array.isArray(d.budgets)?d.budgets:[];save();if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));loadPlanSettings()}render();msg('Backup restaurado.')}catch(e){msg('Arquivo inválido ou incompatível.')}});
+$('restoreBtn').addEventListener('click',async()=>{let f=$('restoreFile').files[0];if(!f)return msg('Selecione um arquivo JSON.');try{let d=JSON.parse(await f.text());if(!Array.isArray(d.transactions)||!Array.isArray(d.goals))throw Error();if(!confirm('Restaurar substituirá os dados atuais. Continuar?'))return;tx=d.transactions;goals=d.goals;wallets=Array.isArray(d.wallets)?d.wallets:wallets;budgets=Array.isArray(d.budgets)?d.budgets:[];save();if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));loadPlanSettings()}render();persistCloud(true);msg('Backup restaurado.')}catch(e){msg('Arquivo inválido ou incompatível.')}});
 $('clearData').addEventListener('click',()=>{if(confirm('Tem certeza? Isso apagará todos os lançamentos e metas deste navegador. Faça backup antes.')){tx=[];goals=[];budgets=[];wallets=[{id:'wallet-personal-cash',owner:'Minha carteira',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-wife-cash',owner:'Carteira da esposa',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},{id:'wallet-henrique-savings',owner:'Poupança Henrique',type:'Poupança',name:'Poupança Henrique',opening:0}];localStorage.removeItem('mf_plan_v1');save();render();msg('Dados apagados.')}});
 render();window.addEventListener('resize',()=>renderCharts($('monthFilter').value||monthNow()));
 </script></body></html>
