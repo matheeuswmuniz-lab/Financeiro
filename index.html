@@ -131,6 +131,12 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 @media(max-width:820px){header{height:68px;padding:0 10px 0 175px;gap:5px}.brand-lockup{top:10px;left:10px;width:158px;height:48px;gap:8px}.brand-mark{width:32px;height:42px;flex-basis:32px}.brand-copy h1{font-size:14px!important}.brand-copy p{display:none}.header-actions{gap:4px!important}.user-control{gap:5px;padding-right:6px;margin-right:0}.user-avatar{width:28px;height:28px;flex-basis:28px}.header-actions .user-chip{max-width:95px;font-size:11px!important}.header-actions button{font-size:11px!important;padding:7px!important}.wrap{margin:68px 0 0;padding:16px 12px 32px}.nav{top:68px;bottom:auto;left:0;right:0;width:auto;height:auto;max-height:none;position:sticky;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:7px;gap:4px;border-right:0;border-bottom:1px solid var(--line)}.nav button{font-size:11px;padding:8px 6px;min-height:38px;gap:5px}.nav-icon{display:none}.dashboard-main,.dashboard-bottom{grid-template-columns:1fr}.inspiration-card{grid-column:auto}.page#dashboard>.row:first-child h2{font-size:27px!important}.dashboard-metrics{gap:9px}.metric-feature,.metric-small{min-height:125px}.card{padding:15px}}
 @media(max-width:480px){header{padding-right:5px}.brand-lockup{max-width:145px}.brand-copy h1{font-size:12px!important}.user-control{gap:3px;padding:2px 5px 2px 0}.user-avatar{width:24px;height:24px;flex-basis:24px}.header-actions .user-chip{max-width:63px;font-size:10px!important}.user-chevron{display:none}.theme-toggle{font-size:0!important;padding:7px!important}.theme-toggle:before{content:"◐";font-size:16px}.logout-button{font-size:10px!important;padding:7px 5px!important}.wrap{padding-left:9px;padding-right:9px}.dashboard-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric-feature,.metric-small{min-height:118px;padding:12px}.metric-feature .metric-head{gap:7px;font-size:11px}.metric-icon{width:30px;height:30px;flex-basis:30px;border-radius:9px}.metric-feature .big{font-size:20px}.metric-small .big{font-size:18px}.quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{grid-template-columns:repeat(3,minmax(0,1fr))}.nav button{font-size:10px;line-height:1.2}}
 
+
+/* Privacidade: ocultar valores financeiros */
+.values-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap}
+.masked-money{filter:blur(7px);user-select:none!important;pointer-events:none}
+.masked-money::selection{background:transparent}
+@media(max-width:720px){#valuesToggleLabel{display:none}.values-toggle{min-width:38px;padding:9px}}
 </style></head>
 <body class="locked">
 
@@ -140,7 +146,6 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
     <p id="loginIntro">Entre com seu e-mail e senha. Seu acesso será sincronizado pela internet.</p>
     <form id="loginForm">
       <div class="field register-only" id="fullNameField" style="display:none"><label for="fullName">Nome completo</label><input id="fullName" type="text" autocomplete="name" maxlength="120" placeholder="Nome e sobrenome"></div>
-      <div class="field register-only" id="preferredNameField" style="display:none"><label for="preferredName">Como deseja ser chamado?</label><input id="preferredName" type="text" autocomplete="nickname" maxlength="60" placeholder="Seu nome de preferência"></div>
       <div class="field"><label for="loginUser">E-mail</label><input id="loginUser" type="email" autocomplete="username" required maxlength="254" placeholder="seuemail@exemplo.com"></div>
       <div class="field"><label for="loginPass">Senha</label><input id="loginPass" type="password" autocomplete="current-password" required minlength="6" maxlength="200" placeholder="Mínimo de 6 caracteres"></div>
       <div class="field" id="confirmPassField" style="display:none"><label for="confirmPass">Confirme a senha</label><input id="confirmPass" type="password" autocomplete="new-password" minlength="8" maxlength="200" placeholder="Digite a senha novamente"></div>
@@ -152,7 +157,7 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
   </div>
 </div>
 
-<header><div class="brand-lockup"><div class="brand-mark" aria-label="Logo Financeiro Muniz"><svg viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M8 50V29l9-5v26z" fill="#176548"/><path d="M22 50V20l9-6v36z" fill="#176548"/><path d="M36 50V29l9-6v27z" fill="#176548"/><path d="M22 28 47 8l-2 11 10-4-2-13-13 2 5 5-23 18z" fill="#176548"/><path d="M8 55h39" stroke="#9bcf75" stroke-width="3" stroke-linecap="round"/></svg></div><div class="brand-copy"><h1>Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p></div></div><div class="no-print header-actions"><div class="user-control"><span class="user-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor" opacity=".9"/><path d="M4 21a8 8 0 0 1 16 0" fill="currentColor" opacity=".9"/></svg></span><div id="currentUser" class="user-chip" aria-live="polite">Usuário</div><span class="user-chevron" aria-hidden="true">⌄</span></div><button id="themeToggle" class="secondary theme-toggle" type="button" aria-label="Alternar tema">☾ Noturno</button><button id="logoutBtn" class="secondary logout-button" type="button" title="Sair da conta">⇥ Sair</button></div></header>
+<header><div class="brand-lockup"><div class="brand-mark" aria-label="Logo Financeiro Muniz"><svg viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M8 50V29l9-5v26z" fill="#176548"/><path d="M22 50V20l9-6v36z" fill="#176548"/><path d="M36 50V29l9-6v27z" fill="#176548"/><path d="M22 28 47 8l-2 11 10-4-2-13-13 2 5 5-23 18z" fill="#176548"/><path d="M8 55h39" stroke="#9bcf75" stroke-width="3" stroke-linecap="round"/></svg></div><div class="brand-copy"><h1>Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p></div></div><div class="no-print header-actions"><div class="user-control"><span class="user-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor" opacity=".9"/><path d="M4 21a8 8 0 0 1 16 0" fill="currentColor" opacity=".9"/></svg></span><div id="currentUser" class="user-chip" aria-live="polite">Usuário</div><span class="user-chevron" aria-hidden="true">⌄</span></div><button id="valuesToggle" class="secondary values-toggle" type="button" aria-label="Ocultar valores financeiros" aria-pressed="false" title="Ocultar valores financeiros"><span id="valuesToggleIcon" aria-hidden="true">◉̸</span><span id="valuesToggleLabel">Ocultar valores</span></button><button id="themeToggle" class="secondary theme-toggle" type="button" aria-label="Alternar tema">☾ Noturno</button><button id="logoutBtn" class="secondary logout-button" type="button" title="Sair da conta">⇥ Sair</button></div></header>
 <main class="wrap">
 <div id="notice" class="notice hidden" role="status"></div>
 <div class="app-layout"><nav class="nav no-print" id="nav" aria-label="Navegação principal">
@@ -304,7 +309,7 @@ function updateLoginMode(){
   ? 'Entre com seu e-mail e senha para acessar os dados compartilhados da família.'
   : 'O sistema precisa ser conectado ao Supabase antes de criar usuários e sincronizar dados.';
  document.getElementById('confirmPassField').style.display='none';
- document.getElementById('fullNameField').style.display='none';document.getElementById('preferredNameField').style.display='none';
+ document.getElementById('fullNameField').style.display='none';
  document.getElementById('confirmPass').required=false;
  document.getElementById('loginSubmit').textContent='Entrar';
  document.getElementById('registerBtn').textContent='Criar minha conta';
@@ -378,15 +383,15 @@ document.getElementById('loginForm').addEventListener('submit',async function(ev
 });
 let registrationMode=false;
 document.getElementById('registerBtn').addEventListener('click',async()=>{
- if(!registrationMode){registrationMode=true;document.getElementById('fullNameField').style.display='flex';document.getElementById('preferredNameField').style.display='flex';document.getElementById('fullName').required=true;document.getElementById('preferredName').required=true;document.getElementById('confirmPassField').style.display='flex';document.getElementById('confirmPass').required=true;document.getElementById('loginSubmit').style.display='none';document.getElementById('registerBtn').textContent='Cadastrar';document.getElementById('loginIntro').textContent='Preencha seus dados para criar sua conta.';showLoginError('');return;}
+ if(!registrationMode){registrationMode=true;document.getElementById('fullNameField').style.display='flex';document.getElementById('fullName').required=true;document.getElementById('confirmPassField').style.display='flex';document.getElementById('confirmPass').required=true;document.getElementById('loginSubmit').style.display='none';document.getElementById('registerBtn').textContent='Cadastrar';document.getElementById('loginIntro').textContent='Preencha seu nome, e-mail e senha para criar sua conta.';showLoginError('');return;}
  if(!cloudConfigured){updateLoginMode();return;}
- const fullName=document.getElementById('fullName').value.trim(),preferredName=document.getElementById('preferredName').value.trim(),email=document.getElementById('loginUser').value.trim().toLowerCase(),password=document.getElementById('loginPass').value,confirmPass=document.getElementById('confirmPass').value;
- if(!fullName||!preferredName){showLoginError('Informe seu nome completo e como deseja ser chamado.');return;}
+ const fullName=document.getElementById('fullName').value.trim(),email=document.getElementById('loginUser').value.trim().toLowerCase(),password=document.getElementById('loginPass').value,confirmPass=document.getElementById('confirmPass').value;
+ if(!fullName){showLoginError('Informe seu nome.');return;}
  if(!email || password.length<8){showLoginError('Informe um e-mail válido e uma senha com pelo menos 8 caracteres.');return;}
  if(password!==confirmPass){showLoginError('As senhas não coincidem.');return;}
  setLoginBusy(true);showLoginError('');
  try{
-  const {data,error}=await cloud.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:fullName,preferred_name:preferredName,name:preferredName}}});
+  const {data,error}=await cloud.auth.signUp({email,password,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:fullName,name:fullName,preferred_name:fullName}}});
   if(error)throw error;
   if(data.session && data.user) await enterAfterAuth(data.user);
   else showLoginError('Conta criada. Confirme o e-mail enviado pelo Supabase e depois entre. Um administrador precisa autorizar este usuário como membro da família no banco.');
@@ -571,4 +576,42 @@ async function installFinanceiroApp(){
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(err => console.warn('Service worker não registrado:', err)));
 }
+
+/* Botão global para ocultar/mostrar valores financeiros */
+(function(){
+  const toggle=document.getElementById('valuesToggle');
+  const icon=document.getElementById('valuesToggleIcon');
+  const label=document.getElementById('valuesToggleLabel');
+  if(!toggle) return;
+  let hidden=false;
+  try { hidden=localStorage.getItem('fm_hide_values')==='1'; } catch(e) {}
+  const moneyOnly=/^\s*(?:R\$\s*)?-?\s*\d[\d.,]*(?:\s*%|\s*)\s*$/;
+  function markMoney(){
+    const candidates=document.querySelectorAll('.big,[id="personalBalance"],[id="businessBalance"],[id="income"],[id="expense"],[id*="balance" i],[class*="amount" i],[class*="money" i],td,dd,output,span,strong,b');
+    candidates.forEach(el=>{
+      if(el===toggle || toggle.contains(el) || el.closest('#valuesToggle')) return;
+      const txt=(el.textContent||'').trim();
+      const isMoney= /R\$\s*-?\s*\d[\d.,]*/.test(txt) && txt.length<80;
+      const isValueClass=el.matches('.big,[id="personalBalance"],[id="businessBalance"],[id="income"],[id="expense"],[id*="balance" i],[class*="amount" i],[class*="money" i]') && moneyOnly.test(txt);
+      if(isMoney && (el.children.length===0 || isValueClass)) el.classList.add('fm-money-candidate');
+    });
+    document.querySelectorAll('.fm-money-candidate').forEach(el=>el.classList.toggle('masked-money',hidden));
+  }
+  function update(){
+    document.body.classList.toggle('values-hidden',hidden);
+    toggle.setAttribute('aria-pressed',String(hidden));
+    toggle.setAttribute('aria-label',hidden?'Mostrar valores financeiros':'Ocultar valores financeiros');
+    toggle.title=hidden?'Mostrar valores financeiros':'Ocultar valores financeiros';
+    if(icon) icon.textContent=hidden?'◉':'◉̸';
+    if(label) label.textContent=hidden?'Mostrar valores':'Ocultar valores';
+    try { localStorage.setItem('fm_hide_values',hidden?'1':'0'); } catch(e) {}
+    markMoney();
+  }
+  toggle.addEventListener('click',()=>{hidden=!hidden;update();});
+  markMoney();
+  update();
+  const observer=new MutationObserver(()=>markMoney());
+  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+
 </script></body></html>
