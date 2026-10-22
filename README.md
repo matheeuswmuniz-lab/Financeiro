@@ -145,16 +145,15 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 .balance-hidden{filter:blur(7px);user-select:none}.scope-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:16px}.scope-metrics .card{padding:20px}.scope-metrics .big{margin-top:8px}.page-heading{margin-bottom:16px;align-items:center;flex-wrap:wrap}
 @media(max-width:720px){.scope-metrics{grid-template-columns:1fr}.page-heading button{width:100%}}
 
-/* Painel organizado por contexto financeiro: Pessoal, Empresa e resumo geral */
-.dashboard-metrics-groups{display:flex;flex-direction:column;gap:18px}
-.metric-group{min-width:0}
-.metric-group-title{display:flex;align-items:center;gap:9px;margin:0 0 10px 2px;font-size:14px;font-weight:800;letter-spacing:-.2px;color:var(--text)}
-.group-dot{display:inline-block;width:9px;height:9px;border-radius:50%}
-.personal-dot{background:#2d9b70}.business-dot{background:#5489b8}.overall-dot{background:#b5c879}
-.metric-group-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.overall-metric-group .metric-group-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(max-width:900px){.metric-group-cards{gap:10px}.metric-group .metric-feature .big{font-size:clamp(21px,3vw,29px)}}
-@media(max-width:600px){.metric-group-cards,.overall-metric-group .metric-group-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric-group-title{font-size:13px}.metric-group .metric-feature{grid-column:span 2}}
+/* Agrupamento explícito dos indicadores pessoais e empresariais */
+.dashboard-finance-section{margin:0 0 14px}
+.dashboard-finance-section h3{font-size:15px;margin:0 0 9px;color:var(--text);display:flex;align-items:center;gap:8px}
+.dashboard-finance-section h3 .section-dot{width:9px;height:9px;border-radius:50%;background:#25865c;display:inline-block}
+.dashboard-finance-section.business h3 .section-dot{background:#3985a8}
+.dashboard-finance-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dashboard-totals-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+@media(max-width:720px){.dashboard-finance-row{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-totals-row{grid-template-columns:1fr}}
+
 </style></head>
 <body class="locked">
 
@@ -183,10 +182,27 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 </nav><div class="content-area">
 <section id="dashboard" class="page">
 <div class="row" style="margin-bottom:18px;flex-wrap:wrap"><div><h2 id="dashboardGreeting" style="margin:0">Bom dia! 👋</h2><div class="muted">Seu dinheiro, com mais clareza e controle.</div></div><input class="month no-print" type="month" id="monthFilter" aria-label="Mês do resumo"></div>
-<div class="dashboard-metrics dashboard-metrics-groups">
- <section class="metric-group personal-metric-group"><h3 class="metric-group-title"><span class="group-dot personal-dot"></span>Finanças pessoais</h3><div class="metric-group-cards"><div class="card metric-feature"><div class="metric-head"><span class="metric-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span>Saldo Pessoal</span><button class="balance-eye" type="button" data-balance-toggle="personalBalance" aria-label="Ocultar saldo pessoal" title="Ocultar saldo pessoal" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="big" id="personalBalance">R$ 0,00</div><div class="trend">↗ Controle das finanças pessoais</div></div><div class="card metric-small"><div class="small-title"><span class="mini-icon">↗</span>Receitas pessoais</div><div class="big green" id="personalIncome">R$ 0,00</div><div class="trend">Pessoal · mês selecionado</div></div><div class="card metric-small"><div class="small-title"><span class="mini-icon red">↘</span>Despesas pessoais</div><div class="big red" id="personalExpense">R$ 0,00</div><div class="trend">Pessoal · mês selecionado</div></div></div></section>
- <section class="metric-group business-metric-group"><h3 class="metric-group-title"><span class="group-dot business-dot"></span>Finanças da empresa</h3><div class="metric-group-cards"><div class="card metric-feature"><div class="metric-head"><span class="metric-icon" style="background:#d9f1e9;color:#159777"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4v18M12 10h7v11M8 9h1M8 13h1M8 17h1M15 13h1M15 17h1"/></svg></span><span>Saldo Empresarial</span><button class="balance-eye" type="button" data-balance-toggle="businessBalance" aria-label="Ocultar saldo empresarial" title="Ocultar saldo empresarial" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="big" id="businessBalance">R$ 0,00</div><div class="trend">↗ Controle das finanças da empresa</div></div><div class="card metric-small"><div class="small-title"><span class="mini-icon">↗</span>Receitas da empresa</div><div class="big green" id="businessIncome">R$ 0,00</div><div class="trend">Empresa · mês selecionado</div></div><div class="card metric-small"><div class="small-title"><span class="mini-icon red">↘</span>Despesas da empresa</div><div class="big red" id="businessExpense">R$ 0,00</div><div class="trend">Empresa · mês selecionado</div></div></div></section>
- <section class="metric-group overall-metric-group"><h3 class="metric-group-title"><span class="group-dot overall-dot"></span>Resumo geral do mês</h3><div class="metric-group-cards"><div class="card metric-small"><div class="small-title"><span class="mini-icon"><svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V4h8v3M8 12h8"/></svg></span>Receitas (mês)</div><div class="big green" id="income">R$ 0,00</div><div class="trend">↗ Receitas recebidas</div></div><div class="card metric-small"><div class="small-title"><span class="mini-icon red"><svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M8 12h8M8 16h5"/></svg></span>Despesas (mês)</div><div class="big red" id="expense">R$ 0,00</div><div class="trend" style="color:#b35b5b">↘ Despesas pagas</div></div></div></section>
+<div class="dashboard-metrics dashboard-finance-summary">
+ <section class="dashboard-finance-section personal">
+  <h3><span class="section-dot"></span>Finanças pessoais</h3>
+  <div class="dashboard-finance-row">
+   <div class="card metric-feature"><div class="metric-head"><span class="metric-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span>Saldo Pessoal</span><button class="balance-eye" type="button" data-balance-toggle="personalBalance" aria-label="Ocultar saldo pessoal" title="Ocultar saldo pessoal" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="big" id="personalBalance">R$ 0,00</div><div class="trend">↗ Controle das finanças pessoais</div></div>
+   <div class="card metric-small"><div class="small-title"><span class="mini-icon">↗</span>Receitas pessoais</div><div class="big green" id="personalIncome">R$ 0,00</div><div class="trend">Pessoal · mês selecionado</div></div>
+   <div class="card metric-small"><div class="small-title"><span class="mini-icon red">↘</span>Despesas pessoais</div><div class="big red" id="personalExpense">R$ 0,00</div><div class="trend">Pessoal · mês selecionado</div></div>
+  </div>
+ </section>
+ <section class="dashboard-finance-section business">
+  <h3><span class="section-dot"></span>Finanças da empresa</h3>
+  <div class="dashboard-finance-row">
+   <div class="card metric-feature"><div class="metric-head"><span class="metric-icon" style="background:#d9f1e9;color:#159777"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4v18M12 10h7v11M8 9h1M8 13h1M8 17h1M15 13h1M15 17h1"/></svg></span><span>Saldo Empresarial</span><button class="balance-eye" type="button" data-balance-toggle="businessBalance" aria-label="Ocultar saldo empresarial" title="Ocultar saldo empresarial" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="big" id="businessBalance">R$ 0,00</div><div class="trend">↗ Controle das finanças da empresa</div></div>
+   <div class="card metric-small"><div class="small-title"><span class="mini-icon">↗</span>Receitas da empresa</div><div class="big green" id="businessIncome">R$ 0,00</div><div class="trend">Empresa · mês selecionado</div></div>
+   <div class="card metric-small"><div class="small-title"><span class="mini-icon red">↘</span>Despesas da empresa</div><div class="big red" id="businessExpense">R$ 0,00</div><div class="trend">Empresa · mês selecionado</div></div>
+  </div>
+ </section>
+ <div class="dashboard-totals-row">
+  <div class="card metric-small"><div class="small-title"><span class="mini-icon"><svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M8 7V4h8v3M8 12h8"/></svg></span>Receitas totais (mês)</div><div class="big green" id="income">R$ 0,00</div><div class="trend">Receitas pessoais + empresariais</div></div>
+  <div class="card metric-small"><div class="small-title"><span class="mini-icon red"><svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" fill="none" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M8 12h8M8 16h5"/></svg></span>Despesas totais (mês)</div><div class="big red" id="expense">R$ 0,00</div><div class="trend">Despesas pessoais + empresariais</div></div>
+ </div>
 </div>
 <div class="dashboard-main">
  <div class="card"><div class="row" style="align-items:flex-start;gap:10px"><div><h2 class="panel-title"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"/></svg>Fluxo mensal</h2><div class="panel-subtitle">Receitas e despesas por dia</div></div><span class="pill" id="chartMonthLabel">Mês atual</span></div><canvas id="dailyChart" height="220" role="img" aria-label="Gráfico diário de receitas e despesas" style="width:100%;height:250px;margin-top:12px"></canvas><div class="chart-legend"><span><i class="legend-dot" style="background:#6ebc5c"></i>Receitas</span><span><i class="legend-dot" style="background:#183d3a"></i>Despesas</span></div></div>
@@ -211,14 +227,14 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 </section>
 <section id="wallets" class="page hidden">
 <div class="two">
-<div class="card"><h2>Criar carteira ou conta</h2><p class="muted small">Cadastre carteiras e contas bancárias e escolha se pertencem às finanças pessoais ou empresariais.</p>
+<div class="card"><h2>Criar carteira ou conta</h2><p class="muted small">Separe seu dinheiro, o da sua esposa e a poupança do Henrique. Cadastre dinheiro físico ou contas bancárias.</p>
 <form id="walletForm"><div class="formgrid">
-<div class="field"><label for="wowner">Responsável (nome da pessoa)</label><input id="wowner" type="text" required maxlength="80" placeholder="Ex.: Matheus, Camila, Henrique"></div>
-<div class="field"><label for="wscope">Gestão da conta</label><select id="wscope"><option value="Pessoal">Pessoal</option><option value="Empresa">Empresa</option></select></div>
+<div class="field"><label for="wowner">Responsável (nome da pessoa)</label><input id="wowner" required maxlength="80" placeholder="Ex.: Matheus, Camila, Henrique"></div>
+<div class="field"><label for="wscope">Gestão da conta</label><select id="wscope" required><option value="Pessoal">Pessoal</option><option value="Empresa">Empresa</option></select></div>
 <div class="field"><label for="wtype">Tipo</label><select id="wtype"><option>Conta bancária</option><option>Dinheiro em mãos</option><option>Poupança</option><option>Carteira digital</option><option>Investimento</option><option>Outro</option></select></div>
-<div class="field full"><label for="wname">Nome da carteira / banco</label><input id="wname" required maxlength="80" placeholder="Ex.: Itaú, Nubank, Conta da empresa"></div>
+<div class="field"><label for="wname">Nome da carteira / banco</label><input id="wname" required maxlength="80" placeholder="Ex.: Itaú, Nubank, Conta da empresa"></div>
 <div class="field full"><label for="wopening">Saldo inicial atual (R$)</label><input id="wopening" type="number" min="0" step=".01" value="0" required></div>
-</div><div class="actions"><button>Adicionar carteira</button></div></form>
+</div><div class="actions"><button>Adicionar carteira / conta</button></div></form>
 </div>
 <div class="card"><h2>Resumo das carteiras</h2><div id="walletSummary"></div></div>
 </div>
@@ -309,9 +325,9 @@ const cloudConfigured = !SUPABASE_URL.startsWith('COLE_') && !SUPABASE_ANON_KEY.
 const cloud = cloudConfigured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}) : null;
 let cloudUser = null, cloudReady = false, cloudSaveQueue = Promise.resolve(), familyRealtimeChannel = null;
 const DEFAULT_WALLETS = [
- {id:'wallet-personal-cash',owner:'Minha carteira',scope:'Pessoal',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
- {id:'wallet-wife-cash',owner:'Carteira da esposa',scope:'Pessoal',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
- {id:'wallet-henrique-savings',owner:'Poupança Henrique',scope:'Pessoal',type:'Poupança',name:'Poupança Henrique',opening:0}
+ {id:'wallet-personal-cash',owner:'Responsável não informado',scope:'Pessoal',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
+ {id:'wallet-wife-cash',owner:'Responsável não informado',scope:'Pessoal',type:'Dinheiro em mãos',name:'Dinheiro no bolso',opening:0},
+ {id:'wallet-henrique-savings',owner:'Henrique',scope:'Pessoal',type:'Poupança',name:'Poupança Henrique',opening:0}
 ];
 function localSnapshot(){
  let plan=null;try{plan=JSON.parse(localStorage.getItem('mf_plan_v1')||'null')}catch(e){}
@@ -322,12 +338,12 @@ function applySnapshot(d){
  if(Array.isArray(d.transactions)) tx=d.transactions;
  if(Array.isArray(d.goals)) goals=d.goals;
  if(Array.isArray(d.wallets) && d.wallets.length) wallets=d.wallets;
+ wallets=wallets.map(w=>({...w,scope:w.scope||(String(w.owner||'').toLowerCase().includes('empresa')?'Empresa':'Pessoal')}));
  if(Array.isArray(d.budgets)) budgets=d.budgets;
  if(Array.isArray(d.henriqueSavings)) henriqueSavings=d.henriqueSavings;
  if(Array.isArray(d.agendaItems)) agendaItems=d.agendaItems;
  if(Array.isArray(d.shoppingItems)) shoppingItems=d.shoppingItems;
  if(d.plan){localStorage.setItem('mf_plan_v1',JSON.stringify(d.plan));if(typeof loadPlanSettings==='function')loadPlanSettings();}
- wallets=wallets.map(w=>({...w,scope:w.scope==='Empresa'?'Empresa':'Pessoal'}));
  tx=tx.map(t=>({...t,walletId:t.walletId||(wallets[0]&&wallets[0].id)}));
  localStorage.setItem('mf_tx_v1',JSON.stringify(tx));localStorage.setItem('mf_goals_v1',JSON.stringify(goals));localStorage.setItem('mf_wallets_v1',JSON.stringify(wallets));localStorage.setItem('mf_budgets_v1',JSON.stringify(budgets));localStorage.setItem('mf_agenda_v1',JSON.stringify(agendaItems));localStorage.setItem('mf_shopping_v1',JSON.stringify(shoppingItems));
 }
@@ -395,9 +411,9 @@ async function persistCloud(showStatus=false){
  catch(e){console.error('Falha ao sincronizar:',e);msg('Atenção: não foi possível sincronizar. Faça um backup e confira a conexão.');}
 }
 async function enterAfterAuth(user){
- cloudUser=user;const displayUser=(user.user_metadata&& (user.user_metadata.full_name||user.user_metadata.preferred_name||user.user_metadata.name))||(user.email||'usuário autorizado').split('@')[0];document.getElementById('currentUser').textContent=displayUser;document.body.classList.remove('locked');document.getElementById('loginScreen').style.display='none';
+ cloudUser=user;const displayUser=(user.user_metadata&& (user.user_metadata.preferred_name||user.user_metadata.name||user.user_metadata.full_name))||(user.email||'usuário autorizado').split('@')[0];document.getElementById('currentUser').textContent=displayUser;document.body.classList.remove('locked');document.getElementById('loginScreen').style.display='none';
  document.getElementById('loginPass').value='';document.getElementById('confirmPass').value='';
- try{await hydrateFamilyData();msg('Bem-vindo(a), '+displayUser+'.');}
+ try{await hydrateFamilyData();msg('Conectado como '+(user.email||'usuário autorizado')+'.');}
  catch(e){document.body.classList.add('locked');document.getElementById('loginScreen').style.display='flex';cloudUser=null;showLoginError(e.message);}
 }
 document.getElementById('loginForm').addEventListener('submit',async function(event){
@@ -438,7 +454,6 @@ const $=id=>document.getElementById(id), brl=n=>Number(n||0).toLocaleString('pt-
 let tx=[],goals=[],wallets=[],budgets=[],henriqueSavings=[],agendaItems=[],shoppingItems=[];
 try{henriqueSavings=JSON.parse(localStorage.getItem('mf_henrique_savings_v1')||'[]');tx=JSON.parse(localStorage.getItem('mf_tx_v1')||'[]');goals=JSON.parse(localStorage.getItem('mf_goals_v1')||'[]');wallets=JSON.parse(localStorage.getItem('mf_wallets_v1')||'[]');budgets=JSON.parse(localStorage.getItem('mf_budgets_v1')||'[]');agendaItems=JSON.parse(localStorage.getItem('mf_agenda_v1')||'[]');shoppingItems=JSON.parse(localStorage.getItem('mf_shopping_v1')||'[]')}catch(e){tx=[];goals=[];wallets=[];budgets=[];agendaItems=[];shoppingItems=[]}
 if(!wallets.length){wallets=DEFAULT_WALLETS.map(w=>({...w}));}
-wallets=wallets.map(w=>({...w,scope:w.scope==='Empresa'?'Empresa':'Pessoal'}));
 tx=tx.map(t=>({...t,scope:t.scope||'Pessoal',walletId:t.walletId||wallets[0].id}));
 function save(){saveLocalOnly();persistCloud(false)}
 function msg(s){$('notice').textContent=s;$('notice').classList.remove('hidden');setTimeout(()=>$('notice').classList.add('hidden'),3500)}
@@ -447,8 +462,7 @@ $('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-page]'
 $('monthFilter').value=monthNow();$('reportMonth').value=monthNow();$('date').value=today();$('agendaDate').value=today();
 $('kind').addEventListener('change',()=>{if($('kind').value==='Receita'&&$('status').value==='Pago')$('status').value='Recebido';if($('kind').value==='Despesa'&&$('status').value==='Recebido')$('status').value='Pago'});
 $('txForm').addEventListener('submit',e=>{e.preventDefault();let installments=Number($('installments').value);let n=$('recurrence').value==='Mensal'?12:installments;if(installments<1||installments>120)return msg('Informe entre 1 e 120 parcelas.');let base=$('date').value;for(let i=0;i<n;i++){let d=new Date(base+'T12:00:00');if(i)d.setMonth(d.getMonth()+i);tx.push({id:crypto.randomUUID(),kind:$('kind').value,value:Math.round(Number($('value').value)*100)/100,desc:$('desc').value.trim()+(n>1?` (${i+1}/${n})`:''),cat:$('cat').value,scope:$('txScope').value,walletId:$('walletSelect').value||wallets[0]?.id,date:d.toISOString().slice(0,10),status:$('status').value,recurrence:$('recurrence').value})}save();e.target.reset();$('date').value=today();$('installments').value='1';render();msg('Lançamento salvo.');});
-$('txFilter').addEventListener('change',render);$('txScopeFilter').addEventListener('change',render);$('txScope').addEventListener('change',()=>{renderWallets();});
-$('walletSelect').addEventListener('change',()=>{const w=wallets.find(x=>x.id===$('walletSelect').value);if(w&&w.scope&&$('txScope').value!==w.scope)$('txScope').value=w.scope;});$('monthFilter').addEventListener('change',render);$('reportMonth').addEventListener('change',render);$('reportScope')?.addEventListener('change',render);
+$('txFilter').addEventListener('change',render);$('txScopeFilter').addEventListener('change',render);$('monthFilter').addEventListener('change',render);$('reportMonth').addEventListener('change',render);$('reportScope')?.addEventListener('change',render);
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function statusPill(t){let cls=t.status==='Pendente'?'pending':(t.status==='Pago'||t.status==='Recebido'?'paid':'');if(t.status==='Pendente'&&t.date<today())cls='late';return `<span class="pill ${cls}">${esc(t.status)}${cls==='late'?' · atrasado':''}</span>`}
 
@@ -457,7 +471,7 @@ function drawBars(id,labels,values,colors){let o=setupCanvas(id);if(!o)return;le
 function drawDonut(id,entries){let o=setupCanvas(id);if(!o)return;let {ctx:c,w,h}=o;c.clearRect(0,0,w,h);let total=entries.reduce((s,x)=>s+x[1],0);if(!total){c.fillStyle='#718078';c.font='12px system-ui';c.textAlign='center';c.fillText('Cadastre despesas para ver o gráfico',w/2,h/2);return}let colors=['#2d7657','#82a96a','#e1b45b','#5688a5','#ba7861','#8b79aa','#60a8a1','#c77d9a','#9ba3aa'];let cx=w*.32,cy=h/2,r=Math.min(65,h*.36),inner=r*.58,start=-Math.PI/2;entries.slice(0,9).forEach((e,i)=>{let angle=e[1]/total*Math.PI*2;c.beginPath();c.moveTo(cx,cy);c.arc(cx,cy,r,start,start+angle);c.closePath();c.fillStyle=colors[i%colors.length];c.fill();start+=angle});c.beginPath();c.arc(cx,cy,inner,0,Math.PI*2);c.fillStyle='#fff';c.fill();c.fillStyle='#1e302a';c.font='bold 11px system-ui';c.textAlign='center';c.fillText('Total',cx,cy-2);c.font='10px system-ui';c.fillText(brl(total),cx,cy+13);c.textAlign='left';let lx=w*.59,ly=Math.max(14,cy-(Math.min(entries.length,5)*27)/2);entries.slice(0,5).forEach((e,i)=>{c.fillStyle=colors[i%colors.length];c.fillRect(lx,ly+i*27,9,9);c.fillStyle='#52655a';c.font='10px system-ui';let label=e[0].length>13?e[0].slice(0,12)+'…':e[0];c.fillText(label,lx+13,ly+9+i*27);c.fillStyle='#1e302a';c.fillText(Math.round(e[1]/total*100)+'%',lx+13,ly+21+i*27)})}
 function renderCharts(month){let data=tx.filter(t=>t.date.startsWith(month));let inc=data.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((s,t)=>s+t.value,0),exp=data.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((s,t)=>s+t.value,0);drawBars('cashChart',['Receitas','Despesas'],[inc,exp],['#2d7657','#c56b58']);let cats={};data.filter(t=>t.kind==='Despesa').forEach(t=>cats[t.cat]=(cats[t.cat]||0)+t.value);drawDonut('categoryChart',Object.entries(cats).sort((a,b)=>b[1]-a[1]));let months=[];let d=new Date(month+'-15T12:00:00');for(let i=5;i>=0;i--){let x=new Date(d.getFullYear(),d.getMonth()-i,15);months.push(x.toISOString().slice(0,7))}let vals=months.map(mm=>{let a=tx.filter(t=>t.date.startsWith(mm));return a.filter(t=>t.kind==='Receita'&&t.status==='Recebido').reduce((s,t)=>s+t.value,0)-a.filter(t=>t.kind==='Despesa'&&t.status==='Pago').reduce((s,t)=>s+t.value,0)});drawBars('trendChart',months.map(mm=>mm.slice(5)),vals,vals.map(v=>v>=0?'#2d7657':'#c56b58'))}
 
-function walletBalance(w){return Number(w.opening||0)+(w.owner==='Poupança Henrique'?henriqueSavings.reduce((sum,m)=>sum+Number(m.value||0),0):0)+tx.filter(t=>t.walletId===w.id&&t.status!=='Pendente').reduce((sum,t)=>sum+(t.kind==='Receita'?t.value:-t.value),0)}
+function walletBalance(w){return Number(w.opening||0)+((w.id==='wallet-henrique-savings'||w.name==='Poupança Henrique'||w.owner==='Poupança Henrique'||w.owner==='Henrique')?henriqueSavings.reduce((sum,m)=>sum+Number(m.value||0),0):0)+tx.filter(t=>t.walletId===w.id&&t.status!=='Pendente').reduce((sum,t)=>sum+(t.kind==='Receita'?t.value:-t.value),0)}
 
 function renderHenriqueSavings(){
  const w=wallets.find(x=>x.owner==='Poupança Henrique'||x.id==='wallet-henrique-savings');
@@ -472,19 +486,19 @@ function renderHenriqueSavings(){
 $('henriqueDate').value=today();
 $('henriqueForm').addEventListener('submit',e=>{
  e.preventDefault();
- let w=wallets.find(x=>x.owner==='Poupança Henrique'||x.id==='wallet-henrique-savings');
- if(!w){w={id:'wallet-henrique-savings',owner:'Poupança Henrique',scope:'Pessoal',type:'Poupança',name:'Poupança Henrique',opening:0};wallets.push(w)}
+ let w=wallets.find(x=>x.owner==='Poupança Henrique'||x.owner==='Henrique'||x.id==='wallet-henrique-savings');
+ if(!w){w={id:'wallet-henrique-savings',owner:'Henrique',scope:'Pessoal',type:'Poupança',name:'Poupança Henrique',opening:0};wallets.push(w)}
  henriqueSavings.push({id:crypto.randomUUID(),value:Math.round(Number($('henriqueValue').value)*100)/100,desc:($('henriqueDesc').value.trim()||'Depósito Poupança Henrique'),date:$('henriqueDate').value});
  save();e.target.reset();$('henriqueDate').value=today();render();msg('Depósito registrado na Poupança Henrique.');
 });
 
 function renderWallets(){
- const select=$('walletSelect');if(select){let prev=select.value;const scope=$('txScope')?.value||'Pessoal';const visibleWallets=wallets.filter(w=>(w.scope||'Pessoal')===scope);select.innerHTML=visibleWallets.map(w=>`<option value="${esc(w.id)}">${esc(w.name)} · ${esc(w.owner)} (${esc(w.scope||'Pessoal')})</option>`).join('');if(visibleWallets.some(w=>w.id===prev))select.value=prev;else if(visibleWallets.length)select.value=visibleWallets[0].id;}
- const groups=['Pessoal','Empresa'];
- $('walletSummary').innerHTML=groups.map(scope=>{let list=wallets.filter(w=>(w.scope||'Pessoal')===scope),total=list.reduce((a,w)=>a+walletBalance(w),0);return `<div class="item"><div class="itemmain"><strong>${scope==='Pessoal'?'Carteiras pessoais':'Contas da empresa'}</strong><small>${list.length} carteira(s)/conta(s)</small></div><strong>${brl(total)}</strong></div>`}).join('');
- $('walletList').innerHTML=wallets.length?wallets.map(w=>`<div class="item"><div class="itemmain"><strong>${esc(w.name)}</strong><small>${esc(w.scope||'Pessoal')} · Responsável: ${esc(w.owner||'Não informado')} · ${esc(w.type)} · Saldo inicial ${brl(w.opening||0)}</small></div><div style="text-align:right"><strong class="amount">${brl(walletBalance(w))}</strong><div class="actions no-print" style="justify-content:flex-end"><button class="secondary" style="padding:6px 9px;font-size:12px" onclick="editWallet('${w.id}')">Editar saldo</button>${!['wallet-personal-cash','wallet-wife-cash','wallet-henrique-savings'].includes(w.id)?`<button class="danger" style="padding:6px 9px;font-size:12px" onclick="deleteWallet('${w.id}')">Excluir</button>`:''}</div></div></div>`).join(''):'<div class="empty">Nenhuma carteira cadastrada.</div>';
+ const select=$('walletSelect');if(select){let prev=select.value;select.innerHTML=wallets.map(w=>`<option value="${esc(w.id)}">${esc(w.scope||'Pessoal')} · ${esc(w.name)} · ${esc(w.owner||'Responsável não informado')}</option>`).join('');if(wallets.some(w=>w.id===prev))select.value=prev}
+ const scopes=['Pessoal','Empresa'];
+ $('walletSummary').innerHTML=scopes.map(scope=>{let list=wallets.filter(w=>(w.scope||'Pessoal')===scope),total=list.reduce((a,w)=>a+walletBalance(w),0);return `<div class="item"><div class="itemmain"><strong>${scope==='Pessoal'?'Carteiras pessoais':'Contas da empresa'}</strong><small>${list.length} carteira(s)/conta(s)</small></div><strong>${brl(total)}</strong></div>`}).join('');
+ $('walletList').innerHTML=wallets.length?wallets.map(w=>`<div class="item"><div class="itemmain"><strong>${esc(w.name)}</strong><small><span class="pill">${esc(w.scope||'Pessoal')}</span> · Responsável: ${esc(w.owner||'Responsável não informado')} · ${esc(w.type)} · Saldo inicial ${brl(w.opening||0)}</small></div><div style="text-align:right"><strong class="amount">${brl(walletBalance(w))}</strong><div class="actions no-print" style="justify-content:flex-end"><button class="secondary" style="padding:6px 9px;font-size:12px" onclick="editWallet('${w.id}')">Editar saldo</button>${!['wallet-personal-cash','wallet-wife-cash','wallet-henrique-savings'].includes(w.id)?`<button class="danger" style="padding:6px 9px;font-size:12px" onclick="deleteWallet('${w.id}')">Excluir</button>`:''}</div></div></div>`).join(''):'<div class="empty">Nenhuma carteira cadastrada.</div>';
 }
-$('walletForm').addEventListener('submit',e=>{e.preventDefault();wallets.push({id:crypto.randomUUID(),owner:$('wowner').value.trim(),scope:$('wscope').value,type:$('wtype').value,name:$('wname').value.trim(),opening:Math.round(Number($('wopening').value)*100)/100});save();e.target.reset();$('wopening').value='0';$('wscope').value='Pessoal';render();msg('Carteira/conta adicionada.');});
+$('walletForm').addEventListener('submit',e=>{e.preventDefault();const owner=$('wowner').value.trim();if(!owner)return msg('Informe o nome da pessoa responsável.');wallets.push({id:crypto.randomUUID(),owner,scope:$('wscope').value,type:$('wtype').value,name:$('wname').value.trim(),opening:Math.round(Number($('wopening').value)*100)/100});save();e.target.reset();$('wopening').value='0';$('wscope').value='Pessoal';$('wtype').value='Conta bancária';render();msg('Carteira/conta adicionada.');});
 function editWallet(id){let w=wallets.find(x=>x.id===id);if(!w)return;let val=prompt('Informe o saldo inicial atual para '+w.name+' (R$). Os lançamentos posteriores serão somados a este valor:',String(w.opening||0));if(val===null||!Number.isFinite(Number(val))||Number(val)<0)return msg('Informe um saldo válido.');w.opening=Math.round(Number(val)*100)/100;save();render();msg('Saldo inicial atualizado.')}
 function deleteWallet(id){let w=wallets.find(x=>x.id===id);if(!w)return;if(tx.some(t=>t.walletId===id))return msg('Esta conta tem lançamentos. Reatribua ou exclua esses lançamentos antes de apagar a carteira.');if(confirm('Excluir a conta '+w.name+'?')){wallets=wallets.filter(x=>x.id!==id);save();render();msg('Conta excluída.')}}
 
