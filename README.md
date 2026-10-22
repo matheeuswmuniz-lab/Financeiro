@@ -154,6 +154,41 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 .dashboard-totals-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
 @media(max-width:720px){.dashboard-finance-row{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-totals-row{grid-template-columns:1fr}}
 
+
+/* CORREÇÃO DE LAYOUT — cartões financeiros e cadastro de carteiras */
+.dashboard-metrics.dashboard-finance-summary{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:18px!important;
+  grid-template-columns:none!important;
+  width:100%;
+}
+.dashboard-finance-section{display:block!important;width:100%;min-width:0}
+.dashboard-finance-section h3{display:flex;align-items:center;gap:9px;margin:0 0 10px;font-size:15px;font-weight:750;color:var(--text)}
+.dashboard-finance-section .section-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#176548;flex:0 0 9px}
+.dashboard-finance-section.business .section-dot{background:#284c78}
+.dashboard-finance-row{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr)!important;gap:14px!important;width:100%;min-width:0}
+.dashboard-finance-row>.card{width:auto!important;min-width:0;min-height:142px}
+.dashboard-finance-row .metric-head{min-width:0;flex-wrap:nowrap;gap:9px}
+.dashboard-finance-row .metric-head>span:not(.metric-icon){min-width:0;overflow-wrap:anywhere}
+.dashboard-finance-row .balance-eye{width:28px;height:28px;min-width:28px;flex:0 0 28px;margin-left:auto;padding:5px;display:inline-grid;place-items:center;background:transparent;color:var(--muted);box-shadow:none;border:1px solid var(--line);border-radius:50%}
+.dashboard-finance-row .balance-eye svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dashboard-totals-row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:14px!important;width:100%}
+.dashboard-totals-row>.card{min-width:0;min-height:112px}
+#dashboard .metric-small .small-title{line-height:1.35;overflow-wrap:anywhere}
+#dashboard .metric-small .big{overflow-wrap:anywhere;word-break:normal}
+#wallets>.two{display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)!important;align-items:start;gap:16px!important}
+#wallets .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+#wallets .field{min-width:0}
+#wallets .field label{line-height:1.35;overflow-wrap:anywhere}
+#wallets .field input,#wallets .field select{min-width:0;width:100%}
+#wallets .field.full{grid-column:1/-1!important}
+#wallets .card{min-width:0}
+@media(max-width:1050px){.dashboard-finance-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}#wallets>.two{grid-template-columns:minmax(0,1fr)!important}}
+@media(max-width:720px){.dashboard-finance-row{grid-template-columns:1fr!important}.dashboard-finance-row>.card{min-height:unset}.dashboard-totals-row{grid-template-columns:1fr!important}#wallets .formgrid{grid-template-columns:1fr!important}#wallets .field.full{grid-column:auto!important}}
+body[data-theme="dark"] .dashboard-finance-section h3{color:var(--text)}
+body[data-theme="dark"] .dashboard-finance-row .balance-eye{background:#202d26;color:var(--muted);border-color:var(--line)}
 </style></head>
 <body class="locked">
 
@@ -227,7 +262,7 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 </section>
 <section id="wallets" class="page hidden">
 <div class="two">
-<div class="card"><h2>Criar carteira ou conta</h2><p class="muted small">Separe seu dinheiro, o da sua esposa e a poupança do Henrique. Cadastre dinheiro físico ou contas bancárias.</p>
+<div class="card"><h2>Criar carteira ou conta</h2><p class="muted small">Cadastre contas pessoais e empresariais, informando o responsável, o tipo, o nome da carteira e o saldo inicial.</p>
 <form id="walletForm"><div class="formgrid">
 <div class="field"><label for="wowner">Responsável (nome da pessoa)</label><input id="wowner" required maxlength="80" placeholder="Ex.: Matheus, Camila, Henrique"></div>
 <div class="field"><label for="wscope">Gestão da conta</label><select id="wscope" required><option value="Pessoal">Pessoal</option><option value="Empresa">Empresa</option></select></div>
