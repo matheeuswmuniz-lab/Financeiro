@@ -190,116 +190,45 @@ body[data-theme="dark"] header,body[data-theme="dark"] .nav{background:#17211c;b
 body[data-theme="dark"] .dashboard-finance-section h3{color:var(--text)}
 body[data-theme="dark"] .dashboard-finance-row .balance-eye{background:#202d26;color:var(--muted);border-color:var(--line)}
 
-/* Ajustes finais para iPhone e telas pequenas; preserva o layout desktop */
-@supports (padding: max(0px)) {
-  body { padding-bottom: env(safe-area-inset-bottom); }
+/* Experiência mobile: cabeçalho compacto, menu recolhível e atalhos inferiores */
+.mobile-menu-toggle{display:none!important}
+.mobile-bottom-nav{display:none}
+@media(max-width:600px){
+ body{font-size:14px;padding-bottom:76px}
+ header{height:64px!important;padding:0 10px!important;justify-content:space-between!important;gap:6px!important;overflow:visible}
+ .brand-lockup{position:static!important;width:auto!important;max-width:calc(100% - 185px);height:48px!important;gap:7px!important;flex:1 1 auto;min-width:0}
+ .brand-mark{width:34px!important;height:38px!important;flex:0 0 34px!important}
+ .brand-copy{min-width:0}.brand-copy h1{font-size:14px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.3px!important}.brand-copy p{display:none!important}
+ .header-actions{margin-left:0!important;gap:4px!important;flex:0 0 auto}
+ .user-control{gap:4px!important;padding:0 4px!important;margin:0!important;border:0!important}
+ .user-avatar{width:27px!important;height:27px!important;flex-basis:27px!important}.user-avatar svg{width:16px!important;height:16px!important}
+ .header-actions .user-chip{display:none!important}.user-chevron{display:none!important}
+ .mobile-menu-toggle{display:inline-flex!important;align-items:center;justify-content:center;width:34px;height:34px;min-height:34px;padding:0!important;border-radius:9px!important;background:#edf4ef!important;color:#214a37!important;font-size:18px!important;flex:0 0 34px}
+ .theme-toggle{display:none!important}.logout-button{font-size:11px!important;padding:7px 5px!important;white-space:nowrap}
+ .wrap{margin:64px 0 0!important;padding:17px 12px 28px!important}
+ .nav{display:none!important;position:fixed!important;z-index:90!important;top:64px!important;left:10px!important;right:10px!important;bottom:auto!important;width:auto!important;height:auto!important;max-height:calc(100dvh - 150px)!important;overflow-y:auto!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:10px!important;gap:5px!important;border:1px solid var(--line)!important;border-radius:16px!important;box-shadow:0 14px 38px #10251a30!important;background:var(--card)!important}
+ body.mobile-menu-open .nav{display:grid!important}
+ .nav button{min-height:42px!important;padding:9px 8px!important;font-size:12px!important;line-height:1.2;gap:7px!important;border-radius:10px!important;white-space:normal}
+ .nav-icon,.nav-icon svg{width:17px!important;height:17px!important;flex-basis:17px!important}
+ .page#dashboard>.row:first-child{gap:10px!important;margin-bottom:16px!important}
+ .page#dashboard>.row:first-child h2{font-size:26px!important;line-height:1.15!important;letter-spacing:-.7px!important}
+ .page#dashboard>.row:first-child .muted{font-size:13px!important;line-height:1.4}
+ .page#dashboard>.row:first-child .month{width:auto;max-width:100%;font-size:12px;padding:8px!important}
+ .dashboard-metrics,.dashboard-finance-row{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ .dashboard-totals-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+ .metric-feature{min-height:unset!important;padding:14px!important}.metric-feature .big{font-size:25px!important}.metric-head{gap:9px!important}
+ .metric-small{min-width:0;padding:12px!important}.metric-small .big{font-size:19px!important;overflow-wrap:anywhere}
+ .card{padding:14px!important;border-radius:15px!important;min-width:0}.section{margin-top:16px!important}.section h2,.card h2{font-size:16px!important}
+ .two,.formgrid{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.field.full{grid-column:auto!important}
+ .row{flex-wrap:wrap;align-items:flex-start}.page-heading{gap:10px}.page-heading button{width:100%}
+ .item{gap:8px;padding:11px 0}.item .amount{font-size:13px}.item .actions button{font-size:11px!important;padding:6px 7px!important}
+ .balance-eye{width:30px!important;height:30px!important;min-height:30px!important;padding:6px!important}
+ .mobile-bottom-nav{position:fixed;z-index:80;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;padding:6px 4px;background:rgba(255,255,255,.96);border:1px solid #e0e8e2;border-radius:17px;box-shadow:0 6px 26px #132d1e1f;backdrop-filter:blur(16px)}
+ .mobile-bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;min-height:48px;padding:4px 1px;background:transparent;color:#607368;font-size:9px;font-weight:650;border-radius:10px;white-space:nowrap}
+ .mobile-bottom-nav button span{font-size:18px;line-height:1.1}.mobile-bottom-nav button.active{background:#e7f2eb;color:#176548}
+ body[data-theme="dark"] .mobile-bottom-nav{background:rgba(23,33,28,.97);border-color:#2d3b34}body[data-theme="dark"] .mobile-bottom-nav button{color:#bdcec3}body[data-theme="dark"] .mobile-bottom-nav button.active{background:#284638;color:#d5f19a}
 }
-@media (max-width: 600px) {
-  html { -webkit-text-size-adjust: 100%; }
-  body { overflow-x: hidden; font-size: 14px; }
-  header {
-    position: relative;
-    min-height: 66px;
-    height: auto;
-    padding: 10px 12px !important;
-    gap: 8px;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
-  .brand-lockup { min-width: 0; max-width: 48%; gap: 8px; }
-  .brand-mark { width: 36px !important; height: 36px !important; flex: 0 0 36px !important; }
-  .brand-copy { min-width: 0; }
-  .brand-copy h1 { font-size: 13px !important; line-height: 1.15; overflow-wrap: anywhere; }
-  .brand-copy p { font-size: 9px !important; line-height: 1.25; }
-  .header-actions { min-width: 0; max-width: 52%; gap: 4px !important; }
-  .header-actions .user-control { min-width: 0; max-width: 100px; }
-  .header-actions .user-chip { max-width: 62px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .header-actions button { white-space: nowrap; }
-  .wrap { width: 100%; max-width: 100%; margin: 0 !important; padding: 12px 10px calc(28px + env(safe-area-inset-bottom)) !important; }
-  .app-layout { display: flex !important; flex-direction: column !important; gap: 12px !important; width: 100%; }
-  .nav {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    max-height: none !important;
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 5px !important;
-    padding: 7px !important;
-    margin: 0 !important;
-    border-radius: 13px !important;
-    overflow: visible !important;
-  }
-  .nav button {
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 38px;
-    padding: 7px 4px !important;
-    font-size: 10px !important;
-    line-height: 1.2;
-    text-align: center !important;
-    justify-content: center;
-    overflow-wrap: anywhere;
-    white-space: normal !important;
-    gap: 3px !important;
-  }
-  .nav-icon { display: none !important; }
-  .content-area { width: 100%; min-width: 0; }
-  .page { min-width: 0; width: 100%; }
-  .page#dashboard > .row:first-child { gap: 8px; align-items: flex-start; }
-  .page#dashboard > .row:first-child h2 { font-size: 24px !important; line-height: 1.15; }
-  .page#dashboard > .row:first-child p { font-size: 12px; }
-  .dashboard-metrics.dashboard-finance-summary { gap: 13px !important; }
-  .dashboard-finance-section { min-width: 0; }
-  .dashboard-finance-section h3 { font-size: 13px !important; line-height: 1.3; }
-  .dashboard-finance-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-  }
-  .dashboard-finance-row > .card {
-    min-width: 0 !important;
-    min-height: 112px !important;
-    padding: 11px !important;
-    grid-column: auto;
-  }
-  .dashboard-finance-row > .card:first-child { grid-column: 1 / -1; }
-  .dashboard-finance-row .metric-head { gap: 5px !important; align-items: center; }
-  .dashboard-finance-row .metric-head > span:not(.metric-icon) { font-size: 11px; line-height: 1.25; }
-  .dashboard-finance-row .metric-icon { width: 28px; height: 28px; flex: 0 0 28px; }
-  .dashboard-finance-row .balance-eye { width: 25px !important; height: 25px !important; min-width: 25px !important; flex: 0 0 25px !important; }
-  .dashboard-finance-row .big { font-size: clamp(18px, 5.2vw, 23px) !important; line-height: 1.2; overflow-wrap: anywhere; }
-  .dashboard-finance-row .card small, .dashboard-finance-row .card p { font-size: 11px; line-height: 1.35; }
-  .dashboard-totals-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 8px !important; margin-top: 8px !important; }
-  .dashboard-totals-row > .card { min-width: 0 !important; min-height: 100px !important; padding: 11px !important; }
-  #dashboard .metric-small .small-title { font-size: 11px; line-height: 1.25; }
-  #dashboard .metric-small .big { font-size: 18px !important; overflow-wrap: anywhere; }
-  .dashboard-main, .dashboard-bottom { grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; }
-  .dashboard-main > *, .dashboard-bottom > * { min-width: 0; }
-  .inspiration-card { grid-column: auto !important; }
-  .card { min-width: 0; padding: 13px !important; border-radius: 14px; }
-  .two, #wallets > .two { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
-  .formgrid, #wallets .formgrid { grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; }
-  .field, .field input, .field select, input, select, textarea { min-width: 0; max-width: 100%; }
-  .field.full, #wallets .field.full { grid-column: auto !important; }
-  .row { flex-wrap: wrap; gap: 8px; }
-  .actions { flex-wrap: wrap; }
-  .actions button { max-width: 100%; }
-  .item { gap: 8px; align-items: flex-start; }
-  .itemmain { min-width: 0; overflow-wrap: anywhere; }
-  .item > div:last-child { min-width: 0; max-width: 48%; overflow-wrap: anywhere; }
-  .amount { overflow-wrap: anywhere; }
-  .scope-metrics { grid-template-columns: minmax(0, 1fr) !important; gap: 9px !important; }
-  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  button, input, select, textarea { font-size: 16px; }
-  .login-card { width: calc(100% - 24px); max-width: 420px; margin: 24px auto; padding: 22px !important; }
-}
-@media (max-width: 380px) {
-  header { padding-left: 8px !important; padding-right: 8px !important; }
-  .brand-copy p { display: none; }
-  .header-actions .user-chip { max-width: 48px; }
-  .dashboard-finance-row > .card, .dashboard-totals-row > .card { padding: 9px !important; }
-  .nav { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-}
+@media(min-width:601px){.mobile-bottom-nav{display:none!important}}
 
 </style></head>
 <body class="locked">
@@ -321,7 +250,14 @@ body[data-theme="dark"] .dashboard-finance-row .balance-eye{background:#202d26;c
   </div>
 </div>
 
-<header><div class="brand-lockup"><div class="brand-mark" aria-label="Logo Financeiro Muniz"><svg viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M8 50V29l9-5v26z" fill="#176548"/><path d="M22 50V20l9-6v36z" fill="#176548"/><path d="M36 50V29l9-6v27z" fill="#176548"/><path d="M22 28 47 8l-2 11 10-4-2-13-13 2 5 5-23 18z" fill="#176548"/><path d="M8 55h39" stroke="#9bcf75" stroke-width="3" stroke-linecap="round"/></svg></div><div class="brand-copy"><h1>Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p></div></div><div class="no-print header-actions"><div class="user-control"><span class="user-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor" opacity=".9"/><path d="M4 21a8 8 0 0 1 16 0" fill="currentColor" opacity=".9"/></svg></span><div id="currentUser" class="user-chip" aria-live="polite">Usuário</div><span class="user-chevron" aria-hidden="true">⌄</span></div><button id="themeToggle" class="secondary theme-toggle" type="button" aria-label="Alternar tema">☾ Noturno</button><button id="logoutBtn" class="secondary logout-button" type="button" title="Sair da conta">⇥ Sair</button></div></header>
+<header><div class="brand-lockup"><div class="brand-mark" aria-label="Logo Financeiro Muniz"><svg viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M8 50V29l9-5v26z" fill="#176548"/><path d="M22 50V20l9-6v36z" fill="#176548"/><path d="M36 50V29l9-6v27z" fill="#176548"/><path d="M22 28 47 8l-2 11 10-4-2-13-13 2 5 5-23 18z" fill="#176548"/><path d="M8 55h39" stroke="#9bcf75" stroke-width="3" stroke-linecap="round"/></svg></div><div class="brand-copy"><h1>Financeiro Muniz</h1><p>Organize hoje. Planeje melhor amanhã.</p></div></div><div class="no-print header-actions"><div class="user-control"><span class="user-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor" opacity=".9"/><path d="M4 21a8 8 0 0 1 16 0" fill="currentColor" opacity=".9"/></svg></span><div id="currentUser" class="user-chip" aria-live="polite">Usuário</div><span class="user-chevron" aria-hidden="true">⌄</span></div><button id="mobileMenuToggle" class="secondary mobile-menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button><button id="themeToggle" class="secondary theme-toggle" type="button" aria-label="Alternar tema">☾ Noturno</button><button id="logoutBtn" class="secondary logout-button" type="button" title="Sair da conta">⇥ Sair</button></div></header>
+<nav class="mobile-bottom-nav no-print" id="mobileBottomNav" aria-label="Atalhos no celular">
+<button type="button" data-mobile-page="dashboard" class="active"><span>⌂</span>Início</button>
+<button type="button" data-mobile-page="transactions"><span>⇄</span>Lançamentos</button>
+<button type="button" data-mobile-page="wallets"><span>▣</span>Carteiras</button>
+<button type="button" data-mobile-page="agenda"><span>▦</span>Agenda</button>
+<button type="button" id="mobileMore"><span>☰</span>Mais</button>
+</nav>
 <main class="wrap">
 <div id="notice" class="notice hidden" role="status"></div>
 <div class="app-layout"><nav class="nav no-print" id="nav" aria-label="Navegação principal">
@@ -604,8 +540,9 @@ if(!wallets.length){wallets=DEFAULT_WALLETS.map(w=>({...w}));}
 tx=tx.map(t=>({...t,scope:t.scope||'Pessoal',walletId:t.walletId||wallets[0].id}));
 function save(){saveLocalOnly();persistCloud(false)}
 function msg(s){$('notice').textContent=s;$('notice').classList.remove('hidden');setTimeout(()=>$('notice').classList.add('hidden'),3500)}
-function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==page));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));render();window.scrollTo({top:0,behavior:'smooth'})}
+function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==page));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.querySelectorAll('[data-mobile-page]').forEach(b=>b.classList.toggle('active',b.dataset.mobilePage===page));document.body.classList.remove('mobile-menu-open');document.getElementById('mobileMenuToggle')?.setAttribute('aria-expanded','false');render();window.scrollTo({top:0,behavior:'smooth'})}
 $('nav').addEventListener('click',e=>{let b=e.target.closest('button[data-page]');if(b)go(b.dataset.page)});
+document.getElementById('mobileMenuToggle')?.addEventListener('click',()=>{const open=document.body.classList.toggle('mobile-menu-open');document.getElementById('mobileMenuToggle').setAttribute('aria-expanded',String(open));document.getElementById('mobileMenuToggle').textContent=open?'✕':'☰'});document.getElementById('mobileBottomNav')?.addEventListener('click',e=>{const b=e.target.closest('[data-mobile-page]');if(b)go(b.dataset.mobilePage)});document.getElementById('mobileMore')?.addEventListener('click',()=>{document.body.classList.toggle('mobile-menu-open');const open=document.body.classList.contains('mobile-menu-open');document.getElementById('mobileMenuToggle')?.setAttribute('aria-expanded',String(open));const btn=document.getElementById('mobileMenuToggle');if(btn)btn.textContent=open?'✕':'☰'});
 $('monthFilter').value=monthNow();$('reportMonth').value=monthNow();$('date').value=today();$('agendaDate').value=today();
 $('kind').addEventListener('change',()=>{if($('kind').value==='Receita'&&$('status').value==='Pago')$('status').value='Recebido';if($('kind').value==='Despesa'&&$('status').value==='Recebido')$('status').value='Pago'});
 $('txForm').addEventListener('submit',e=>{e.preventDefault();let installments=Number($('installments').value);let n=$('recurrence').value==='Mensal'?12:installments;if(installments<1||installments>120)return msg('Informe entre 1 e 120 parcelas.');let base=$('date').value;for(let i=0;i<n;i++){let d=new Date(base+'T12:00:00');if(i)d.setMonth(d.getMonth()+i);tx.push({id:crypto.randomUUID(),kind:$('kind').value,value:Math.round(Number($('value').value)*100)/100,desc:$('desc').value.trim()+(n>1?` (${i+1}/${n})`:''),cat:$('cat').value,scope:$('txScope').value,walletId:$('walletSelect').value||wallets[0]?.id,date:d.toISOString().slice(0,10),status:$('status').value,recurrence:$('recurrence').value})}save();e.target.reset();$('date').value=today();$('installments').value='1';render();msg('Lançamento salvo.');});
